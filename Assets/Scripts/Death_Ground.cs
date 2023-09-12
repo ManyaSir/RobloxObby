@@ -17,7 +17,6 @@ public class Death_Ground : MonoBehaviour
         if(this.CompareTag("Death_Ground") && other.CompareTag("Player"))
         {
             SceneManager.LoadScene("Game");
-            System.Threading.Thread.Sleep(6000);
             Latest_Checkpoint.transform.position = Checkpoint_1.transform.position;
             Player.transform.position = Latest_Checkpoint.transform.position;
            
