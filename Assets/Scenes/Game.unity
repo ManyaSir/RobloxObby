@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -649,6 +649,8 @@ GameObject:
   - component: {fileID: 845640259}
   - component: {fileID: 845640258}
   - component: {fileID: 845640262}
+  - component: {fileID: 845640263}
+  - component: {fileID: 845640264}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -750,6 +752,46 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &845640263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845640257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: badaa16d4882cc74a8c31b4c38539865, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  theCamera: {fileID: 963194225}
+  followDistance: 5
+  mouseSensitivityX: 4
+  mouseSensitivityY: 2
+  heightOffset: 0.5
+--- !u!114 &845640264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845640257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 214167ddffc8c51409076fab50ffaf72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  up: 119
+  down: 115
+  right: 100
+  left: 97
+  jump: 32
+  restart: 0
+  previous: 0
+  next: 0
+  MoveVector1: {x: 0.25, y: 0, z: 0}
+  MoveVector2: {x: 0, y: 0, z: 0.25}
+  MoveVectorJump: {x: 0, y: 0.25, z: 0}
 --- !u!1 &866629545
 GameObject:
   m_ObjectHideFlags: 0
