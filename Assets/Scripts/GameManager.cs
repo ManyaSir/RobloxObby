@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public static Transform Latest_Checkpoint_value;
 
-    // Update is called once per frame
     void Update()
     {
-        
+        Latest_Checkpoint_value.Transform = Checkpoints.Latest_Checkpoint.Transform;
     }
 }

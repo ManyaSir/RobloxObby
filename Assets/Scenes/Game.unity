@@ -615,12 +615,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 212c7141777696c4ab183abcdde9250b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  theCamera: {fileID: 963194225}
-  followDistance: 5
-  mouseSensitivityX: 4
-  mouseSensitivityY: 2
-  heightOffset: 0.5
-  isPaused: 0
 --- !u!1 &2012873160
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,6 +627,7 @@ GameObject:
   - component: {fileID: 2012873163}
   - component: {fileID: 2012873162}
   - component: {fileID: 2012873161}
+  - component: {fileID: 2012873165}
   m_Layer: 0
   m_Name: Checkpoint
   m_TagString: Untagged
@@ -718,3 +713,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2012873165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012873160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02c6f318c12db0345a8814c3490309fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
