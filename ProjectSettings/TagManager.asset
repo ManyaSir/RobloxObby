@@ -5,12 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Death_Ground
-  - CheckPoint1
-  - CheckPoint2
-  - CheckPoint3
-  - CheckPoint4
-  - CheckPoint5
-  - Money
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
