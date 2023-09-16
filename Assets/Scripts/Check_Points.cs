@@ -5,31 +5,39 @@ using UnityEngine.SceneManagement;
 
 public class Check_Points : MonoBehaviour
 {
-    [SerializeField] public static GameObject Latest_Checkpoint;
-    [SerializeField] private Rigidbody rg_Player;
-    [SerializeField] private Transform tr_Player;
-    public static bool isChanged = false;
+    [SerializeField] GameObject Latest_Checkpoint;
+    [SerializeField] GameObject Latest_BlockWall;
+    [SerializeField] private GameObject Player;
+    [SerializeField] private Transform Spawn_tr;
+    public static GameObject Spawn;
+    public static bool IsMoneyCountChanged = false;
     
+    void Awake()
+    {
+        Spawn.transform.position = Spawn_tr.transform.position;
+        Debug.Log("" + Spawn.transform.position);
+    }
+    
+    void Start()
+    {
+        Latest_Checkpoint.transform.position = GameManager.Latest_Checkpoint_count.transform.position;
+        Player.transform.position = Latest_Checkpoint.transform.position;
+    }
+
     void OnTriggerEnter(Collider other)
     {
+        if(this.CompareTag("Latest_Checkpoint") && other.CompareTag("Money"))
+        {
+            IsMoneyCountChanged = true;
+            other.enabled = false;
+        }
         if(this.CompareTag("Checkpoint") && other.CompareTag("Player"))
         {
-            Latest_Checkpoint.transform.position = this.transform.position;
-            isChanged = true;
+            GameManager.Latest_Checkpoint_count.transform.position = this.transform.position;
+            Latest_Checkpoint.transform.position = GameManager.Latest_Checkpoint_count.transform.position;
+
         }
     }
 
-    void Start()
-    {
-        if (GameManager.isStartGame == true)
-        {
-            //GameManager.Latest_Checkpoint_value.transform.position = Latest_Checkpoint.transform.position;
-            GameManager.Latest_Checkpoint_value = Latest_Checkpoint.transform.position;
-            GameManager.isStartGame = false;
-        }
-        //Latest_Checkpoint.transform.position = GameManager.Latest_Checkpoint_value.transform.position;
-        Latest_Checkpoint.transform.position = GameManager.Latest_Checkpoint_value;
-        //tr_Player.transform.position = GameManager.Latest_Checkpoint_value.transform.position;
-        tr_Player.transform.position = GameManager.Latest_Checkpoint_value;
-    }
+    
 }
