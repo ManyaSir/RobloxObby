@@ -8,18 +8,13 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public static Transform Latest_Checkpoint_count;
-    public static Transform Latest_BlockWall_count;
     [SerializeField] KeyCode keyOne;
     public int Money = 0;
     public int Current_Lvl = 0;
-    private Text lvls_count;
-    private Text money_count;   
+    [SerializeField] private Text lvls_count;
+    [SerializeField] private Text money_count;   
 
-    void Awake()
-    {
-        Latest_Checkpoint_count.transform.position = Check_Points.Spawn.transform.position;
-    }
+    
     void Start()
     {
         instance = this;
@@ -34,7 +29,9 @@ public class GameManager : MonoBehaviour
         if(Check_Points.IsMoneyCountChanged == true)
         {
             Money += 5;
+            Current_Lvl++;
             PlayerPrefs.SetInt("Money", Money);
+            PlayerPrefs.SetInt("Current_Lvl", Current_Lvl);
             PlayerPrefs.Save();
             Check_Points.IsMoneyCountChanged = false;
             UpInf();
