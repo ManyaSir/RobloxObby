@@ -8,6 +8,9 @@ TagManager:
   - Checkpoint
   - Latest_Checkpoint
   - Money
+  - MainCustomisation
+  - Button
+  - Accessory
   layers:
   - Default
   - TransparentFX
