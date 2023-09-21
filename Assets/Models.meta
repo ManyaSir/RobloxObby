@@ -1,10 +1,19 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 <<<<<<<< HEAD:Assets/Music.meta
 guid: d3c8dce40f1880641957802c6a6aa4eb
 ========
 guid: a437dc05cb9cd704fa218947f4f1f305
 >>>>>>>> Dimit:Assets/Models.meta
 folderAsset: yes
+=======
+<<<<<<<< HEAD:Assets/Scenes/Game.unity.meta
+guid: b25bee968a08d6548902cb6d6351e16e
+========
+guid: d0dc18c6fc6a87f408648f029e9e80d6
+folderAsset: yes
+>>>>>>>> Semen:Assets/Models.meta
+>>>>>>> Semen
 DefaultImporter:
   externalObjects: {}
   userData: 
