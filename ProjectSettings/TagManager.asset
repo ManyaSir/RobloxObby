@@ -11,6 +11,8 @@ TagManager:
   - CheckPoint4
   - CheckPoint5
   - Money
+  - TEXTSOUND
+  - SLIDERSOUND
   layers:
   - Default
   - TransparentFX
