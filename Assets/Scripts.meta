@@ -1,9 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 <<<<<<<< HEAD:Assets/Scripts.meta
 guid: a0716258ae86ffe4198832ff3489f6ea
 ========
 guid: 26e899070522f1e4ebda56359d5abf78
 >>>>>>>> Semen:Assets/Animations.meta
+=======
+guid: a0716258ae86ffe4198832ff3489f6ea
+>>>>>>> NewTimofey
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
