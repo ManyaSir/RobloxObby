@@ -5,17 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - Death_Ground
-  - Checkpoint
-  - Latest_Checkpoint
   - Money
-<<<<<<< HEAD
   - TEXTSOUND
   - SLIDERSOUND
-=======
-  - MainCustomisation
-  - Button
+  - Checkpoint
+  - Latest_Checkpoint
   - Accessory
->>>>>>> NewTimofey
+  - Button
   layers:
   - Default
   - TransparentFX
