@@ -32,6 +32,10 @@ public class Check_Points : MonoBehaviour
         float x = float.Parse(values[1].Trim(), CultureInfo.InvariantCulture.NumberFormat);
         float y = float.Parse(values[2].Trim(), CultureInfo.InvariantCulture.NumberFormat);
         float z = float.Parse(values[3].Trim(), CultureInfo.InvariantCulture.NumberFormat);
+        if (values.Length < 4)
+        {
+            Debug.Log("error!");
+        }
         return new Vector3(x, y, z);
     }
     
