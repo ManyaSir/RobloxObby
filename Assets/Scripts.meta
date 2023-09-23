@@ -1,5 +1,6 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<<< HEAD:Assets/Scripts.meta
 guid: a0716258ae86ffe4198832ff3489f6ea
 ========
@@ -8,6 +9,9 @@ guid: 26e899070522f1e4ebda56359d5abf78
 =======
 guid: a0716258ae86ffe4198832ff3489f6ea
 >>>>>>> NewTimofey
+=======
+guid: 92ff7faf08f83624b8cac5a27b81152c
+>>>>>>> NewPetya
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
