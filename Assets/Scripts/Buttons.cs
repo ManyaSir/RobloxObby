@@ -12,28 +12,38 @@ public class Buttons : MonoBehaviour
     [SerializeField] private GameObject Progress;
     [SerializeField] private GameObject Fone;
     [SerializeField] private GameObject Game;
+    public Check_Points check_points;
+    public GameManager gamemanager;
 
 
     
     public void NewGame()
     {
-        //Reset();
+        check_points.ResetV2();
+        Player.SetActive(true);
+        check_points.Camera.SetActive(false);
         Menu.SetActive(false);
         Fone.SetActive(false);
         Game.SetActive(true);
         Progress.SetActive(true);
+        gamemanager.UpInf();
     }
 
     public void Continue()
     {
+        Player.SetActive(true);
+        check_points.Camera.SetActive(false);
         Menu.SetActive(false);
         Fone.SetActive(false);
         Game.SetActive(true);
         Progress.SetActive(true);
+        gamemanager.UpInf();
     }
 
     public void BackGameMenu()
     {
+        Player.SetActive(false);
+        check_points.Camera.SetActive(true);
         Menu.SetActive(true);
         Fone.SetActive(true);
         Game.SetActive(false);
@@ -71,5 +81,15 @@ public class Buttons : MonoBehaviour
     public void BackPause()
     {
         Pause.SetActive(false);
+        // Player.SetActive(false);
+        // check_points.Camera.SetActive(true);
+    }
+
+    void FixedUpdate()
+    {
+        if(Input.GetKey(KeyCode.Escape))
+        {
+            PauseButton();
+        }
     }
 }

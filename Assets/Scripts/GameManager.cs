@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void UpInf()
+    public void UpInf()
     {
         lvls_count.text = "" + Current_Lvl;
         money_count.text = "" + Money;

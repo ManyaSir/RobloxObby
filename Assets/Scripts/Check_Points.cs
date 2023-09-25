@@ -14,7 +14,10 @@ public class Check_Points : MonoBehaviour
     [SerializeField] public Transform Latest_Checkpoint_count;
     [SerializeField] public Transform Latest_BlockWall_count;
     [SerializeField] public Transform Latest_BlockWall_place;
+    [SerializeField] public GameObject Camera;
     //public static Trans Spawn = new Vector3(7.0f, 0.5f, 0.0f);
+    public GameManager gamemanager;
+
     public static bool IsMoneyCountChanged = false;
     
     void Awake()
@@ -39,9 +42,11 @@ public class Check_Points : MonoBehaviour
     void Start()  
     {  
         
+
         if(this.CompareTag("Checkpoint"))  
         {  
-            
+            Player.SetActive(false);
+            Camera.SetActive(true);
             GameManager.Latest_Checkpoint_pos = PlayerPrefs.GetString("StringLatest_Checkpoint");  
 
             
@@ -68,6 +73,7 @@ public class Check_Points : MonoBehaviour
 
             Latest_BlockWall.transform.position = Latest_BlockWall_count.transform.position;
         } 
+        
     }
 
     void OnTriggerEnter(Collider other) 
@@ -81,6 +87,8 @@ public class Check_Points : MonoBehaviour
             GameManager.Latest_BlockWall_pos = Latest_BlockWall_count.transform.position.ToString();
             PlayerPrefs.SetString("StringLatest_BlockWall", GameManager.Latest_BlockWall_pos);
             PlayerPrefs.Save();
+            gamemanager.UpInf();
+
         } 
         if(this.CompareTag("Checkpoint") && other.CompareTag("Player"))
         {
@@ -89,6 +97,8 @@ public class Check_Points : MonoBehaviour
             GameManager.Latest_Checkpoint_pos = Latest_Checkpoint_count.transform.position.ToString();
             PlayerPrefs.SetString("StringLatest_Checkpoint", GameManager.Latest_Checkpoint_pos);
             PlayerPrefs.Save();
+            gamemanager.UpInf();
+
 
         }
         if(this.CompareTag("Death_Ground") && other.CompareTag("Player"))
@@ -105,6 +115,8 @@ public class Check_Points : MonoBehaviour
                 
             
             Player.transform.position = Latest_Checkpoint.transform.position;  
+            gamemanager.UpInf();
+
         }
     }
 
@@ -118,6 +130,17 @@ public class Check_Points : MonoBehaviour
         PlayerPrefs.SetInt("Current_Lvl", 0);
         PlayerPrefs.Save();
         SceneManager.LoadScene("Game");
+    }
+
+    public void ResetV2()
+    {
+        Latest_Checkpoint_count.transform.position = Spawn.transform.position;
+        GameManager.Latest_Checkpoint_pos = Latest_Checkpoint_count.transform.position.ToString();
+        PlayerPrefs.SetString("StringLatest_Checkpoint", GameManager.Latest_Checkpoint_pos);
+        PlayerPrefs.SetString("StringLatest_BlockWall", null);
+        PlayerPrefs.SetInt("Money", 0   );
+        PlayerPrefs.SetInt("Current_Lvl", 0);
+        PlayerPrefs.Save();
     }
 
 
