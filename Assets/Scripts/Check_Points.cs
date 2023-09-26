@@ -41,7 +41,6 @@ public class Check_Points : MonoBehaviour
     
     void Start()  
     {  
-        
 
         if(this.CompareTag("Checkpoint"))  
         {  
@@ -129,11 +128,12 @@ public class Check_Points : MonoBehaviour
         PlayerPrefs.SetInt("Money", 0   );
         PlayerPrefs.SetInt("Current_Lvl", 0);
         PlayerPrefs.Save();
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("Game 1");
     }
 
     public void ResetV2()
     {
+        Debug.Log("Success!");
         Latest_Checkpoint_count.transform.position = Spawn.transform.position;
         GameManager.Latest_Checkpoint_pos = Latest_Checkpoint_count.transform.position.ToString();
         PlayerPrefs.SetString("StringLatest_Checkpoint", GameManager.Latest_Checkpoint_pos);
@@ -141,6 +141,9 @@ public class Check_Points : MonoBehaviour
         PlayerPrefs.SetInt("Money", 0   );
         PlayerPrefs.SetInt("Current_Lvl", 0);
         PlayerPrefs.Save();
+        gamemanager.UpInf();
+        Debug.Log("Success2!");
+
     }
 
 

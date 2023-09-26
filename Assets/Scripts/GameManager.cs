@@ -55,5 +55,6 @@ public class GameManager : MonoBehaviour
     {
         lvls_count.text = "" + Current_Lvl;
         money_count.text = "" + Money;
+        Debug.Log("UpInf has completed!");
     }
 }

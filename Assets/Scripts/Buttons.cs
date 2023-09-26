@@ -14,8 +14,14 @@ public class Buttons : MonoBehaviour
     [SerializeField] private GameObject Game;
     public Check_Points check_points;
     public GameManager gamemanager;
+    bool IsPauseActive = false;
 
 
+    // public void Start()
+    // {
+    //     gamemanager = GetComponent<GameManager>();
+
+    // }
     
     public void NewGame()
     {
