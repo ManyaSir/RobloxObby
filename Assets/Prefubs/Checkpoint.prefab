@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1cf33cb0c08d0c44cb8fb83bc4438245, type: 2}
+  - {fileID: 2100000, guid: 53c21605fe7bf644bbd542ff2db1402a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -118,6 +118,8 @@ MonoBehaviour:
   Latest_Checkpoint_count: {fileID: 0}
   Latest_BlockWall_count: {fileID: 0}
   Latest_BlockWall_place: {fileID: 6640211956657390041}
+  Camera: {fileID: 0}
+  gamemanager: {fileID: 0}
 --- !u!1 &6640211956657390038
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,3 +271,5 @@ MonoBehaviour:
   Latest_Checkpoint_count: {fileID: 0}
   Latest_BlockWall_count: {fileID: 0}
   Latest_BlockWall_place: {fileID: 0}
+  Camera: {fileID: 0}
+  gamemanager: {fileID: 0}

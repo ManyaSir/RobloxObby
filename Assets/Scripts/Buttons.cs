@@ -20,7 +20,6 @@ public class Buttons : MonoBehaviour
     // public void Start()
     // {
     //     gamemanager = GetComponent<GameManager>();
-
     // }
     
     public void NewGame()
@@ -33,6 +32,8 @@ public class Buttons : MonoBehaviour
         Game.SetActive(true);
         Progress.SetActive(true);
         gamemanager.UpInf();
+        check_points.SecondStart();
+        //Debug.Log("NewGame has completed");
     }
 
     public void Continue()
