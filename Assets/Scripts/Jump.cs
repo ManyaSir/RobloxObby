@@ -3,7 +3,7 @@
 public class Jump : MonoBehaviour
 {
     Rigidbody rigidbody;
-    public float jumpStrength = 2;
+    public static float jumpStrength = 2f;
     public event System.Action Jumped;
 
     private bool isJumping = false;

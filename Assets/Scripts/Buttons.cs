@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Buttons : MonoBehaviour
@@ -91,6 +92,12 @@ public class Buttons : MonoBehaviour
         // Player.SetActive(false);
         // check_points.Camera.SetActive(true);
     }
+
+    public void JumpUpdate()
+    {
+        Jump.jumpStrength += 100f;
+        Debug.Log($"{Jump.jumpStrength}");
+    }  
 
     void FixedUpdate()
     {
