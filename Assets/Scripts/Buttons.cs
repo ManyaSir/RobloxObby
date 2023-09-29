@@ -95,8 +95,8 @@ public class Buttons : MonoBehaviour
 
     public void JumpUpdate()
     {
-        Jump.jumpStrength += 100f;
-        Debug.Log($"{Jump.jumpStrength}");
+        JumpVersion2.jumpStrength += 100f;
+        Debug.Log($"{JumpVersion2.jumpStrength}");
     }  
 
     void FixedUpdate()

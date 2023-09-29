@@ -1,43 +1,43 @@
-﻿using UnityEngine;
+﻿// using UnityEngine;
 
-public class Jump : MonoBehaviour
-{
-    Rigidbody rigidbody;
-    public static float jumpStrength = 2f;
-    public event System.Action Jumped;
-    public Animation JumpAnim;
+// public class Jump : MonoBehaviour
+// {
+//     Rigidbody rigidbody;
+//     public static float jumpStrength = 2f;
+//     public event System.Action Jumped;
+//     public Animation JumpAnim;
 
-    private bool isJumping = false;
+//     private bool isJumping = false;
 
-    [SerializeField, Tooltip("Prevents jumping when the transform is in mid-air.")]
-    GroundCheck groundCheck;
+//     [SerializeField, Tooltip("Prevents jumping when the transform is in mid-air.")]
+//     GroundCheck groundCheck;
 
 
-    void Reset()
-    {
-        // Try to get groundCheck.
-        groundCheck = GetComponentInChildren<GroundCheck>();
-    }
+//     void Reset()
+//     {
+//         // Try to get groundCheck.
+//         groundCheck = GetComponentInChildren<GroundCheck>();
+//     }
 
-    void Awake()
-    {
-        // Get rigidbody.
-        rigidbody = GetComponent<Rigidbody>();
-    }
+//     void Awake()
+//     {
+//         // Get rigidbody.
+//         rigidbody = GetComponent<Rigidbody>();
+//     }
 
-    void LateUpdate()
-    {
-        if ((Input.GetButton("Jump") || isJumping) && (!groundCheck || groundCheck.isGrounded))
-        {
-            rigidbody.AddForce(Vector3.up * 5 * jumpStrength);
-            JumpAnim.Play();
-            Jumped?.Invoke();
-        }
-    }
+//     void LateUpdate()
+//     {
+//         if ((Input.GetButton("Jump") || isJumping) && (!groundCheck || groundCheck.isGrounded))
+//         {
+//             rigidbody.AddForce(Vector3.up * 5 * jumpStrength);
+//             JumpAnim.Play();
+//             Jumped?.Invoke();
+//         }
+//     }
 
-    // void Start()
-    // {
-    //     JumpAnim = GetComponent<Animation>();
-    // }
-}
+//     // void Start()
+//     // {
+//     //     JumpAnim = GetComponent<Animation>();
+//     // }
+// }
 

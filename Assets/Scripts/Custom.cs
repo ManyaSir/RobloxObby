@@ -6,7 +6,13 @@ public class Custom : MonoBehaviour
 {
     
     public GameObject Accessory;
+    [SerializeField] public int Accessory_Index;
     
+    void Start()
+    {
+        
+    }
+
     public void Customing()
     {
         GameObject[] accessories = GameObject.FindGameObjectsWithTag("Accessory");

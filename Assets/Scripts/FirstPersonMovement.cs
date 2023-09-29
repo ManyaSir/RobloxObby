@@ -10,6 +10,8 @@ public class FirstPersonMovement : MonoBehaviour
     public bool IsRunning { get; private set; }
     public float runSpeed = 9;
     public KeyCode runningKey = KeyCode.LeftShift;
+    public static int IsWalk = 0;
+    public PlayerAnimations playeranimations;
 
     Rigidbody rigidbody;
     /// <summary> Functions to override movement speed. Will use the last added override. </summary>
@@ -27,6 +29,15 @@ public class FirstPersonMovement : MonoBehaviour
     {
         // Update IsRunning from input.
         IsRunning = canRun && Input.GetKey(runningKey);
+        // if(IsRunning)
+        // {
+        //     IsWalk = 1;
+        //     playeranimations.WalkActive();
+        // } else
+        // {
+        //     IsWalk = 0;
+        //     playeranimations.WalkActive();
+        // }
 
         // Get targetMovingSpeed.
         float targetMovingSpeed = IsRunning ? runSpeed : speed;
@@ -40,5 +51,6 @@ public class FirstPersonMovement : MonoBehaviour
 
         // Apply movement.
         rigidbody.velocity = transform.rotation * new Vector3(targetVelocity.x, rigidbody.velocity.y, targetVelocity.y);
+
     }
 }

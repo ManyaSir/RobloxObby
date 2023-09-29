@@ -10,8 +10,10 @@ TagManager:
   - SLIDERSOUND
   - Checkpoint
   - Latest_Checkpoint
-  - Accessory
   - Button
+  - Custom_Controller
+  - Accessory2
+  - Accessory1
   layers:
   - Default
   - TransparentFX
