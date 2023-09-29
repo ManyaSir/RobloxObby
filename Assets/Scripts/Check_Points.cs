@@ -15,7 +15,7 @@ public class Check_Points : MonoBehaviour
     [SerializeField] public Transform Latest_BlockWall_count;
     [SerializeField] public Transform Latest_BlockWall_place;
     [SerializeField] public GameObject Camera;
-    //public static Trans Spawn = new Vector3(7.0f, 0.5f, 0.0f);
+    public GameObject DestroyMoneyGameObject;
     public GameManager gamemanager;
 
     public static bool IsMoneyCountChanged = false;
@@ -70,10 +70,6 @@ public class Check_Points : MonoBehaviour
             Latest_BlockWall.transform.position = Latest_BlockWall_count.transform.position;
             Debug.Log("Координаты стены были изменены на текущее сохранение");          
             Debug.Log("Метод старт был закончен");
-            if(Latest_Checkpoint.transform.position == this.transform.position)
-            {
-                DestroyMoneyChild();
-            }
         } 
         
     }
@@ -120,6 +116,12 @@ public class Check_Points : MonoBehaviour
             gamemanager.UpInf();
 
         }
+        if(this.CompareTag("Latest_Checkpoint") && other.CompareTag("Checkpoint"))
+        {
+            DestroyMoneyGameObject = other.gameObject;
+            DestroyMoneyGameObject = GameObject.Find("Money");
+            Debug.Log("Finded Money");
+        }
     }
 
     public void Reset()
@@ -161,13 +163,12 @@ public class Check_Points : MonoBehaviour
 
     }
 
-    public void DestroyMoneyChild()
+    public void DestroyMoneyChild(GameObject MoneyCount)
     {
-        Transform moneyChild = transform.Find("Money"); 
         
-        if(moneyChild != null)
+        if(MoneyCount != null)
         {
-            moneyChild.gameObject.SetActive(false);
+            MoneyCount.gameObject.SetActive(false);
             Debug.Log("Монета была успешно уничтожена");
         } else 
         {
@@ -201,7 +202,8 @@ public class Check_Points : MonoBehaviour
         // Latest_BlockWall.transform.position = Latest_BlockWall_count.transform.position;
 
     }
-
+    
+    
 
     
 }

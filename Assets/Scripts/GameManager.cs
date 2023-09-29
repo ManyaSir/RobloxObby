@@ -17,7 +17,8 @@ public class GameManager : MonoBehaviour
     public static string Latest_BlockWall_pos;
     public static Vector3 Latest_BlockWall_ToVector3;
     public static Vector3 Latest_Checkpoint_ToVector3;
-    int[] Cost_Panels_Active_Page_1 = new int[5];
+    public static int[] Cost_Panels_Active_Page_1 = new int[5];
+    public static int[] Cost_Panels_Active_Page_2 = new int[5];
 
     
     void Start()
