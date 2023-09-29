@@ -5,6 +5,7 @@ public class Jump : MonoBehaviour
     Rigidbody rigidbody;
     public float jumpStrength = 2;
     public event System.Action Jumped;
+    public Animation JumpAnim;
 
     private bool isJumping = false;
 
@@ -29,8 +30,14 @@ public class Jump : MonoBehaviour
         if ((Input.GetButton("Jump") || isJumping) && (!groundCheck || groundCheck.isGrounded))
         {
             rigidbody.AddForce(Vector3.up * 5 * jumpStrength);
+            JumpAnim.Play();
             Jumped?.Invoke();
         }
     }
+
+    // void Start()
+    // {
+    //     JumpAnim = GetComponent<Animation>();
+    // }
 }
 
