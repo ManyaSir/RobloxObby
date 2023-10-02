@@ -14,6 +14,9 @@ TagManager:
   - Custom_Controller
   - Accessory2
   - Accessory1
+  - Accessory
+  - Slider
+  - Slider_Text
   layers:
   - Default
   - TransparentFX
