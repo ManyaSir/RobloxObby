@@ -42,6 +42,7 @@ public class Buttons : MonoBehaviour
         check_points.DestroyMoneyChild(check_points.DestroyMoneyGameObject);
         Player.SetActive(true);
         check_points.Camera.SetActive(false);
+        check_points.FindDeletingCheckpoints();
         Menu.SetActive(false);
         Fone.SetActive(false);
         Game.SetActive(true);

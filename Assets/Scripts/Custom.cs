@@ -13,7 +13,16 @@ public class Custom : MonoBehaviour
     {
         if(this.CompareTag("Custom_Controller"))
         
-        {    for(int i = 0; i < 4; i++)
+        {    
+            for(int i = 0; i < 4; i++)
+            {
+                GameManager.Cost_Panels_Active_Page_1[i] = PlayerPrefs.GetInt("Accesory_Number_1" + i);
+            }
+            for(int i = 0; i < 4; i++)
+            {
+                GameManager.Cost_Panels_Active_Page_2[i] = PlayerPrefs.GetInt("Accesory_Number_2" + i);
+            }
+            for(int i = 0; i < 4; i++)
             {
                 if(GameManager.Cost_Panels_Active_Page_1[i] == 0)
                 {
@@ -28,6 +37,7 @@ public class Custom : MonoBehaviour
                     if(Panel != null)
                     {
                         Panel.SetActive(false);
+                        Debug.Log("Cost" + i + " куплен");
                     }
                 }
             }
@@ -78,7 +88,7 @@ public class Custom : MonoBehaviour
             PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") - 10);
             PlayerPrefs.Save();
             GameManager.Cost_Panels_Active_Page_1[Accessory_Index] = 1;
-            PlayerPrefs.SetInt("Accesory_Number" + Accessory_Index, 1);
+            PlayerPrefs.SetInt("Accesory_Number_1" + Accessory_Index, 1);
             PlayerPrefs.Save();
             gamemanager.UpInf();
             this.gameObject.SetActive(false);
@@ -92,7 +102,7 @@ public class Custom : MonoBehaviour
             PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") - 25);
             PlayerPrefs.Save();
             GameManager.Cost_Panels_Active_Page_1[Accessory_Index] = 1;
-            PlayerPrefs.SetInt("Accesory_Number" + Accessory_Index, 1);
+            PlayerPrefs.SetInt("Accesory_Number_1" + Accessory_Index, 1);
             PlayerPrefs.Save();
             gamemanager.UpInf();
             this.gameObject.SetActive(false);
@@ -106,7 +116,7 @@ public class Custom : MonoBehaviour
             PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") - 50);
             PlayerPrefs.Save();
             GameManager.Cost_Panels_Active_Page_1[Accessory_Index] = 1;
-            PlayerPrefs.SetInt("Accesory_Number" + Accessory_Index, 1);
+            PlayerPrefs.SetInt("Accesory_Number_1" + Accessory_Index, 1);
             PlayerPrefs.Save();
             gamemanager.UpInf();
             this.gameObject.SetActive(false);
@@ -120,7 +130,7 @@ public class Custom : MonoBehaviour
             PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") - 10);
             PlayerPrefs.Save();
             GameManager.Cost_Panels_Active_Page_2[Accessory_Index] = 1;
-            PlayerPrefs.SetInt("Accesory_Number" + Accessory_Index, 1);
+            PlayerPrefs.SetInt("Accesory_Number_2" + Accessory_Index, 1);
             PlayerPrefs.Save();
             gamemanager.UpInf();
             this.gameObject.SetActive(false);
@@ -134,7 +144,7 @@ public class Custom : MonoBehaviour
             PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") - 25);
             PlayerPrefs.Save();
             GameManager.Cost_Panels_Active_Page_2[Accessory_Index] = 1;
-            PlayerPrefs.SetInt("Accesory_Number" + Accessory_Index, 1);
+            PlayerPrefs.SetInt("Accesory_Number_2" + Accessory_Index, 1);
             PlayerPrefs.Save();
             gamemanager.UpInf();
             this.gameObject.SetActive(false);
@@ -148,7 +158,7 @@ public class Custom : MonoBehaviour
             PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") - 50);
             PlayerPrefs.Save();
             GameManager.Cost_Panels_Active_Page_2[Accessory_Index] = 1;
-            PlayerPrefs.SetInt("Accesory_Number" + Accessory_Index, 1);
+            PlayerPrefs.SetInt("Accesory_Number_2" + Accessory_Index, 1);
             PlayerPrefs.Save();
             gamemanager.UpInf();
             this.gameObject.SetActive(false);

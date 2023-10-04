@@ -29,15 +29,15 @@ public class FirstPersonMovement : MonoBehaviour
     {
         // Update IsRunning from input.
         IsRunning = canRun && Input.GetKey(runningKey);
-        // if(IsRunning)
-        // {
-        //     IsWalk = 1;
-        //     playeranimations.WalkActive();
-        // } else
-        // {
-        //     IsWalk = 0;
-        //     playeranimations.WalkActive();
-        // }
+        if(IsRunning)
+        {
+            IsWalk = 1;
+            playeranimations.WalkActive();
+        } else
+        {
+            IsWalk = 0;
+            playeranimations.WalkActive();
+        }
 
         // Get targetMovingSpeed.
         float targetMovingSpeed = IsRunning ? runSpeed : speed;

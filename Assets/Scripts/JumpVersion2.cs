@@ -4,39 +4,44 @@ using UnityEngine;
 
 public class JumpVersion2 : MonoBehaviour
 {
-    public static float jumpStrength = 5f; // Переменная для задания высоты прыжка
-    
-    private bool canJump = true; // Флаг, показывающий, может ли персонаж прыгнуть
-
-    private Rigidbody rb;
-
     public PlayerAnimations playeranimations;
 
-    private void Start()
+    public static float jumpStrength = 5f;         // Настройка силы прыжка
+    private Rigidbody rb;
+    public static bool isJumping = false;
+    public static int JumpCountAnim = 0;
+
+    void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    public void Update()
+    void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && canJump)
+        if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
         {
-            Jump();
+            rb.AddForce(new Vector3(0, jumpStrength, 0), ForceMode.Impulse);
+            isJumping = true;
+            JumpCountAnim = 2;
+            playeranimations.JumpAnim();
+        }
+
+        if (rb.velocity.y < 0 && isJumping == true)
+        {
+            JumpCountAnim = 3;
+            playeranimations.JumpAnim();
+            Debug.Log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         }
     }
 
-    public void Jump()
+    void OnCollisionEnter(Collision collision)
     {
-        //playeranimations.JumpAnim();
-        rb.AddForce(Vector3.up * jumpStrength, ForceMode.Impulse);
-        canJump = false;
-    }
-
-    public void OnCollisionEnter(Collision collision)
-    {
-        if (!collision.gameObject.CompareTag("Death_Ground"))
+        if (!collision.gameObject.CompareTag("Death_Ground"))   
         {
-            canJump = true;
+            isJumping = false;
+            FirstPersonMovement.IsWalk = 0;
         }
     }
+
+    
 }
