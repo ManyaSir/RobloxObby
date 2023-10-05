@@ -54,12 +54,18 @@ public class Check_Points : MonoBehaviour
 
     void OnTriggerEnter(Collider other) 
     { 
-        if(this.CompareTag("Money") && other.CompareTag("Player")) 
+        if (other == null) {
+            return;
+        }
+
+        if (this.CompareTag("Money") && other.CompareTag("Player")) 
         { 
             IsMoneyCountChanged = true; 
             Destroy(this.gameObject); 
-            gamemanager.UpInf();
 
+            if (gamemanager != null) {
+                gamemanager.UpInf();
+            }
         } 
         if(this.CompareTag("Checkpoint") && other.CompareTag("Player"))
         {
