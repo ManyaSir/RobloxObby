@@ -13,6 +13,8 @@ public class Buttons : MonoBehaviour
     [SerializeField] private GameObject Progress;
     [SerializeField] private GameObject Fone;
     [SerializeField] private GameObject Game;
+    [SerializeField] private GameObject GameMusic;
+    [SerializeField] private GameObject MenuMusic;
     public Check_Points check_points;
     public GameManager gamemanager;
     bool IsPauseActive = false;
@@ -33,6 +35,8 @@ public class Buttons : MonoBehaviour
         Game.SetActive(true);
         Progress.SetActive(true);
         gamemanager.UpInf();
+        GameMusic.SetActive(true);
+        MenuMusic.SetActive(false);
         check_points.SecondStart();
         //Debug.Log("NewGame has completed");
     }
@@ -47,6 +51,8 @@ public class Buttons : MonoBehaviour
         Fone.SetActive(false);
         Game.SetActive(true);
         Progress.SetActive(true);
+        GameMusic.SetActive(true);
+        MenuMusic.SetActive(false);
         gamemanager.UpInf();
     }
 
@@ -59,6 +65,8 @@ public class Buttons : MonoBehaviour
         Game.SetActive(false);
         Progress.SetActive(false);
         Pause.SetActive(false);
+        GameMusic.SetActive(false);
+        MenuMusic.SetActive(true);
     }
 
     public void SettingsButton()

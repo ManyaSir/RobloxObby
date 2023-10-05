@@ -7,13 +7,10 @@ using System.Globalization;
 public class Check_Points : MonoBehaviour
 {
     [SerializeField] public Transform Latest_Checkpoint;
-    [SerializeField] Transform Latest_BlockWall;
     [SerializeField] public GameObject Player;
     [SerializeField] public Transform Spawn;
     [SerializeField] public Transform ZeroCount;
     [SerializeField] public Transform Latest_Checkpoint_count;
-    [SerializeField] public Transform Latest_BlockWall_count;
-    [SerializeField] public Transform Latest_BlockWall_place;
     [SerializeField] public GameObject Camera;
     public GameObject DestroyMoneyGameObject;
     public GameManager gamemanager;
@@ -25,7 +22,6 @@ public class Check_Points : MonoBehaviour
         if(this.CompareTag("Checkpoint"))
         {
             Latest_Checkpoint_count.transform.position = Spawn.transform.position;
-            //Latest_BlockWall.transform.position = new Vector3(10f, 1.5f, 8000f);
         }
         
     }
@@ -52,10 +48,6 @@ public class Check_Points : MonoBehaviour
             Latest_Checkpoint_count.transform.position = GameManager.Latest_Checkpoint_ToVector3;     
             Latest_Checkpoint.transform.position = Latest_Checkpoint_count.transform.position;    
             Player.transform.position = Latest_Checkpoint.transform.position;
-            //GameManager.Latest_BlockWall_pos = PlayerPrefs.GetString("StringLatest_BlockWall");
-            //GameManager.Latest_BlockWall_ToVector3 = StringToVector3(GameManager.Latest_BlockWall_pos);
-            //Latest_BlockWall_count.transform.position = GameManager.Latest_BlockWall_ToVector3;
-            //Latest_BlockWall.transform.position = Latest_BlockWall_count.transform.position;
         } 
         
     }
@@ -66,11 +58,6 @@ public class Check_Points : MonoBehaviour
         { 
             IsMoneyCountChanged = true; 
             Destroy(this.gameObject); 
-            //Latest_BlockWall_count.transform.position = Latest_BlockWall_place.transform.position;
-            //Latest_BlockWall.transform.position = Latest_BlockWall_count.transform.position;
-            //GameManager.Latest_BlockWall_pos = Latest_BlockWall_count.transform.position.ToString();
-            //PlayerPrefs.SetString("StringLatest_BlockWall", GameManager.Latest_BlockWall_pos);
-            //PlayerPrefs.Save();
             gamemanager.UpInf();
 
         } 
@@ -155,7 +142,6 @@ public class Check_Points : MonoBehaviour
         Latest_Checkpoint_count.transform.position = GameManager.Latest_Checkpoint_ToVector3;         
         Latest_Checkpoint.transform.position = Latest_Checkpoint_count.transform.position;  
         Player.transform.position = Latest_Checkpoint.transform.position;
-        //Latest_BlockWall.transform.position = new Vector3(10f, 1.5f, 8000f);
         PlayerPrefs.SetString("StringLatest_BlockWall", null);
         PlayerPrefs.Save();
         
