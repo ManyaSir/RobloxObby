@@ -10,6 +10,11 @@ public class Custom : MonoBehaviour
     public GameObject Accessory;
     [SerializeField] public int Accessory_Index;
     public GameManager gamemanager;
+    [SerializeField] private GameObject CostButton;
+    [SerializeField] private int IndexCost;
+
+
+
     
     void Start()
     {
@@ -28,14 +33,34 @@ public class Custom : MonoBehaviour
             {
                 if(GameManager.Cost_Panels_Active_Page_1[i] == 0)
                 {
-                    GameObject Panel = GameObject.Find("Cost_1_" + i);
+                    GameObject Panel = null;
+                    GameObject[] objects = Resources.FindObjectsOfTypeAll<GameObject>();
+
+                    foreach (GameObject obj in objects)
+                    {
+                        if (obj.name == "Lock_1_" + i)
+                        {
+                            Panel = obj;
+                            break;
+                        }
+                    }                   
                     if(Panel != null)
                     {
                         Panel.SetActive(true);
                     }
                 } else if (GameManager.Cost_Panels_Active_Page_1[i] == 1)
                 {
-                    GameObject Panel = GameObject.Find("Cost_1_" + i);
+                    GameObject Panel = null;
+                    GameObject[] objects = Resources.FindObjectsOfTypeAll<GameObject>();
+
+                    foreach (GameObject obj in objects)
+                    {
+                        if (obj.name == "Lock_1_" + i)
+                        {
+                            Panel = obj;
+                            break;
+                        }
+                    }          
                     if(Panel != null)
                     {
                         Panel.SetActive(false);
@@ -47,14 +72,34 @@ public class Custom : MonoBehaviour
             {
                 if(GameManager.Cost_Panels_Active_Page_2[i] == 0)
                 {
-                    GameObject Panel = GameObject.Find("Cost_2_" + i);
+                    GameObject Panel = null;
+                    GameObject[] objects = Resources.FindObjectsOfTypeAll<GameObject>();
+
+                    foreach (GameObject obj in objects)
+                    {
+                        if (obj.name == "Lock_2_" + i)
+                        {
+                            Panel = obj;
+                            break;
+                        }
+                    }          
                     if(Panel != null)
                     {
                         Panel.SetActive(true);
                     }
                 } else if (GameManager.Cost_Panels_Active_Page_2[i] == 1)
                 {
-                    GameObject Panel = GameObject.Find("Cost_2_" + i);
+                    GameObject Panel = null;
+                    GameObject[] objects = Resources.FindObjectsOfTypeAll<GameObject>();
+
+                    foreach (GameObject obj in objects)
+                    {
+                        if (obj.name == "Lock_2_" + i)
+                        {
+                            Panel = obj;
+                            break;
+                        }
+                    }          
                     if(Panel != null)
                     {
                         Panel.SetActive(false);
@@ -101,7 +146,8 @@ public class Custom : MonoBehaviour
             PlayerPrefs.SetInt("Accesory_Number_1" + Accessory_Index, 1);
             PlayerPrefs.Save();
             gamemanager.UpInf();
-            GameObject FalseActive = GameObject.Find("Cost_1_" + Accessory_Index);
+            GameObject FalseActive = GameObject.Find("Lock_1_" + Accessory_Index);
+            gamemanager.Current_CostButton.SetActive(false);
             FalseActive.SetActive(false);
         }
     }
@@ -116,7 +162,8 @@ public class Custom : MonoBehaviour
             PlayerPrefs.SetInt("Accesory_Number_1" + Accessory_Index, 1);
             PlayerPrefs.Save();
             gamemanager.UpInf();
-            GameObject FalseActive = GameObject.Find("Cost_1_" + Accessory_Index);
+            GameObject FalseActive = GameObject.Find("Lock_1_" + Accessory_Index);
+            gamemanager.Current_CostButton.SetActive(false);
             FalseActive.SetActive(false);
         }
     }
@@ -196,4 +243,39 @@ public class Custom : MonoBehaviour
 
     }
     
+    public void Accessory_Cost_Button_1()
+    {
+        gamemanager.Current_CostButton.SetActive(false);
+        GameObject[] objects = Resources.FindObjectsOfTypeAll<GameObject>();
+
+        foreach (GameObject obj in objects)
+        {
+            if (obj.name == "Cost_1_" + IndexCost)
+            {
+                CostButton = obj;
+                break;
+            }
+        }
+
+        CostButton.SetActive(true);
+        gamemanager.Current_CostButton = CostButton;
+    }
+
+    public void Accessory_Cost_Button_2()
+    {
+        gamemanager.Current_CostButton.SetActive(false);
+        GameObject[] objects = Resources.FindObjectsOfTypeAll<GameObject>();
+
+        foreach (GameObject obj in objects)
+        {
+            if (obj.name == "Cost_2_" + IndexCost)
+            {
+                CostButton = obj;
+                break;
+            }
+        }
+
+        CostButton.SetActive(true);
+        gamemanager.Current_CostButton = CostButton;
+    }
 }

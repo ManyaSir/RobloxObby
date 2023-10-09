@@ -88,6 +88,7 @@ public class Buttons : MonoBehaviour
     public void BackSkinsMenu()
     {
         Menu.SetActive(true);
+        gamemanager.Current_CostButton.SetActive(false);
         Skins.SetActive(false);
     }
 
@@ -116,4 +117,5 @@ public class Buttons : MonoBehaviour
             PauseButton();
         }
     }
+    
 }

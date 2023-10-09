@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public static Vector3 Latest_Checkpoint_ToVector3;
     public static int[] Cost_Panels_Active_Page_1 = new int[5];
     public static int[] Cost_Panels_Active_Page_2 = new int[5];
+    [SerializeField] public GameObject Current_CostButton;
 
     
     void Start()
@@ -54,6 +55,8 @@ public class GameManager : MonoBehaviour
 
     public void UpInf()
     {
+        Current_Lvl = PlayerPrefs.GetInt("Current_Lvl");
+        Money = PlayerPrefs.GetInt("Money");
         lvls_count.text = "" + Current_Lvl;
         money_count.text = "" + Money;
     }
