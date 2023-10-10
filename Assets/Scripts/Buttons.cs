@@ -15,9 +15,14 @@ public class Buttons : MonoBehaviour
     [SerializeField] private GameObject Game;
     [SerializeField] private GameObject GameMusic;
     [SerializeField] private GameObject MenuMusic;
+    [SerializeField] private GameObject Page1;
+    [SerializeField] private GameObject Page2;
+    [SerializeField] private GameObject NextButton;
+    [SerializeField] private GameObject BackButton;
     public Check_Points check_points;
     public GameManager gamemanager;
     bool IsPauseActive = false;
+    private int CurrentPage = 1;
 
 
     // public void Start()
@@ -90,6 +95,9 @@ public class Buttons : MonoBehaviour
         Menu.SetActive(true);
         gamemanager.Current_CostButton.SetActive(false);
         Skins.SetActive(false);
+        CurrentPage = 1;
+        NextButton.SetActive(true);
+        BackButton.SetActive(false);
     }
 
     public void PauseButton()
@@ -115,6 +123,25 @@ public class Buttons : MonoBehaviour
         if(Input.GetKey(KeyCode.Escape))
         {
             PauseButton();
+        }
+    }
+    public void NextPage()
+    {
+        if(CurrentPage == 1)
+        {
+            Page2.SetActive(true);
+            Page1.SetActive(false);
+            NextButton.SetActive(false);
+            BackButton.SetActive(true);
+            CurrentPage = 2;
+        } else if (CurrentPage == 2)
+        {
+            Page1.SetActive(true);
+            Page2.SetActive(false);
+            NextButton.SetActive(true);
+            BackButton.SetActive(false);
+            CurrentPage = 1;
+
         }
     }
     

@@ -178,7 +178,8 @@ public class Custom : MonoBehaviour
             PlayerPrefs.SetInt("Accesory_Number_1" + Accessory_Index, 1);
             PlayerPrefs.Save();
             gamemanager.UpInf();
-            GameObject FalseActive = GameObject.Find("Cost_1_" + Accessory_Index);
+            GameObject FalseActive = GameObject.Find("Lock_1_" + Accessory_Index);
+            gamemanager.Current_CostButton.SetActive(false);
             FalseActive.SetActive(false);
 
         }
@@ -193,7 +194,8 @@ public class Custom : MonoBehaviour
             PlayerPrefs.SetInt("Accesory_Number_2" + Accessory_Index, 1);
             PlayerPrefs.Save();
             gamemanager.UpInf();
-            GameObject FalseActive = GameObject.Find("Cost_2_" + Accessory_Index);
+            GameObject FalseActive = GameObject.Find("Lock_2_" + Accessory_Index);
+            gamemanager.Current_CostButton.SetActive(false);
             FalseActive.SetActive(false);
         }
     }
@@ -208,7 +210,8 @@ public class Custom : MonoBehaviour
             PlayerPrefs.SetInt("Accesory_Number_2" + Accessory_Index, 1);
             PlayerPrefs.Save();
             gamemanager.UpInf();
-            GameObject FalseActive = GameObject.Find("Cost_2_" + Accessory_Index);
+            GameObject FalseActive = GameObject.Find("Lock_2_" + Accessory_Index);
+            gamemanager.Current_CostButton.SetActive(false);
             FalseActive.SetActive(false);
         }
     }
@@ -223,7 +226,8 @@ public class Custom : MonoBehaviour
             PlayerPrefs.SetInt("Accesory_Number_2" + Accessory_Index, 1);
             PlayerPrefs.Save();
             gamemanager.UpInf();
-            GameObject FalseActive = GameObject.Find("Cost_2_" + Accessory_Index);
+            GameObject FalseActive = GameObject.Find("Lock_2_" + Accessory_Index);
+            gamemanager.Current_CostButton.SetActive(false);
             FalseActive.SetActive(false);
 
         }
