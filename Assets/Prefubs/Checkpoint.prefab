@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6640211955109826604}
   - component: {fileID: 6640211955109826605}
   - component: {fileID: 6640211955109826607}
+  - component: {fileID: 8426761821838354944}
   - component: {fileID: 6640211955109826606}
   m_Layer: 0
   m_Name: Money
@@ -98,6 +99,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.9999999, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8426761821838354944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6640211955109826600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2b5a158bae56a949a74abfcda6ed35e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Money: {fileID: 6640211955109826600}
 --- !u!114 &6640211955109826606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,13 +125,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Latest_Checkpoint: {fileID: 0}
-  Latest_BlockWall: {fileID: 0}
   Player: {fileID: 0}
   Spawn: {fileID: 0}
   ZeroCount: {fileID: 0}
   Latest_Checkpoint_count: {fileID: 0}
-  Latest_BlockWall_count: {fileID: 0}
-  Latest_BlockWall_place: {fileID: 0}
   Camera: {fileID: 0}
   DestroyMoneyGameObject: {fileID: 0}
   gamemanager: {fileID: 0}
@@ -233,13 +244,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Latest_Checkpoint: {fileID: 0}
-  Latest_BlockWall: {fileID: 0}
   Player: {fileID: 0}
   Spawn: {fileID: 0}
   ZeroCount: {fileID: 0}
   Latest_Checkpoint_count: {fileID: 0}
-  Latest_BlockWall_count: {fileID: 0}
-  Latest_BlockWall_place: {fileID: 0}
   Camera: {fileID: 0}
   DestroyMoneyGameObject: {fileID: 0}
   gamemanager: {fileID: 0}

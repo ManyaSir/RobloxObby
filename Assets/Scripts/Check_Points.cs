@@ -107,8 +107,7 @@ public class Check_Points : MonoBehaviour
         Latest_Checkpoint_count.transform.position = Spawn.transform.position;
         GameManager.Latest_Checkpoint_pos = Latest_Checkpoint_count.transform.position.ToString();
         PlayerPrefs.SetString("StringLatest_Checkpoint", GameManager.Latest_Checkpoint_pos);
-        PlayerPrefs.SetString("StringLatest_BlockWall", null);
-        PlayerPrefs.SetInt("Money", 0   );
+        //PlayerPrefs.SetInt("Money", 0   );
         PlayerPrefs.SetInt("Current_Lvl", 0);
         PlayerPrefs.Save();
         gamemanager.ResetInf();
@@ -120,8 +119,7 @@ public class Check_Points : MonoBehaviour
         Latest_Checkpoint_count.transform.position = Spawn.transform.position;
         GameManager.Latest_Checkpoint_pos = Latest_Checkpoint_count.transform.position.ToString();
         PlayerPrefs.SetString("StringLatest_Checkpoint", GameManager.Latest_Checkpoint_pos);
-        PlayerPrefs.SetString("StringLatest_BlockWall", null);
-        PlayerPrefs.SetInt("Money", 0   );
+        //PlayerPrefs.SetInt("Money", 0   );
         PlayerPrefs.SetInt("Current_Lvl", 0);
         PlayerPrefs.Save();
         gamemanager.ResetInf();
