@@ -107,7 +107,6 @@ public class Check_Points : MonoBehaviour
         Latest_Checkpoint_count.transform.position = Spawn.transform.position;
         GameManager.Latest_Checkpoint_pos = Latest_Checkpoint_count.transform.position.ToString();
         PlayerPrefs.SetString("StringLatest_Checkpoint", GameManager.Latest_Checkpoint_pos);
-        //PlayerPrefs.SetInt("Money", 0   );
         PlayerPrefs.SetInt("Current_Lvl", 0);
         PlayerPrefs.Save();
         gamemanager.ResetInf();
@@ -119,7 +118,6 @@ public class Check_Points : MonoBehaviour
         Latest_Checkpoint_count.transform.position = Spawn.transform.position;
         GameManager.Latest_Checkpoint_pos = Latest_Checkpoint_count.transform.position.ToString();
         PlayerPrefs.SetString("StringLatest_Checkpoint", GameManager.Latest_Checkpoint_pos);
-        //PlayerPrefs.SetInt("Money", 0   );
         PlayerPrefs.SetInt("Current_Lvl", 0);
         PlayerPrefs.Save();
         gamemanager.ResetInf();
@@ -151,32 +149,54 @@ public class Check_Points : MonoBehaviour
         
 
     }
-    public void FindDeletingCheckpoints()
-    {
-        GameObject DeleteCheckpoints;
-        for (int i = 0; i != GameManager.Current_Lvl + 1; i++)
-        {
-            if (i == GameManager.Current_Lvl)
-            {
-                DeleteCheckpoints = GameObject.Find("Checkpoint " + i);
-                if(DeleteCheckpoints == null)
-                {
-                    Debug.Log("EROROROROROROROROROORO!OR!OR!O!RO!RO!RO!R");
-                }
-                GameObject deleteMoney = DeleteCheckpoints.GetComponentInChildren<Transform>().Find("Money").gameObject;
-                Destroy(deleteMoney.gameObject);
-            } else 
-            {
-                DeleteCheckpoints = GameObject.Find("Checkpoint " + i);
-                if(DeleteCheckpoints == null)
-                {
-                    Debug.Log("EROROROROROROROROROORO!OR!OR!O!RO!RO!RO!R");
-                }
-                Destroy(DeleteCheckpoints.gameObject);
-            }
+    // public void FindDeletingCheckpoints()
+    // {
+    //     GameObject DeleteCheckpoints;
+    //     for (int i = 0; i != GameManager.Current_Lvl + 1; i++)
+    //     {
+    //         if (i == GameManager.Current_Lvl)
+    //         {
+    //             DeleteCheckpoints = GameObject.Find("Checkpoint " + i);
+    //             if(DeleteCheckpoints == null)
+    //             {
+    //                 Debug.Log("EROROROROROROROROROORO!OR!OR!O!RO!RO!RO!R");
+    //             }
+    //             GameObject deleteMoney = DeleteCheckpoints.GetComponentInChildren<Transform>().Find("Money").gameObject;
+    //             Destroy(deleteMoney.gameObject);
+    //         } else 
+    //         {
+    //             DeleteCheckpoints = GameObject.Find("Checkpoint " + i);
+    //             if(DeleteCheckpoints == null)
+    //             {
+    //                 Debug.Log("EROROROROROROROROROORO!OR!OR!O!RO!RO!RO!R");
+    //             }
+    //             Destroy(DeleteCheckpoints.gameObject);
+    //         }
                     
+    //     }
+    // }
+
+    public void FindDeletingCheckpoints()
+{
+    for (int i = 0; i != GameManager.Current_Lvl + 1; i++)
+    {
+        GameObject[] deleteCheckpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
+        foreach (GameObject checkpoint in deleteCheckpoints)
+        {
+            if (checkpoint.name == "Checkpoint " + i)
+            {
+                if (i == GameManager.Current_Lvl)
+                {
+                    GameObject deleteMoney = checkpoint.transform.Find("Money").gameObject;
+                    Destroy(deleteMoney);
+                }
+                Destroy(checkpoint);
+                break;
+            }
         }
     }
+}
+    
     
     
 

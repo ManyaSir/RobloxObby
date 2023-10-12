@@ -23,6 +23,7 @@ public class Buttons : MonoBehaviour
     public GameManager gamemanager;
     bool IsPauseActive = false;
     private int CurrentPage = 1;
+    public LevelsChange levelschange;
 
 
     // public void Start()
@@ -33,6 +34,9 @@ public class Buttons : MonoBehaviour
     public void NewGame()
     {
         check_points.ResetV2();
+        PlayerPrefs.SetInt("MapStatus", 1);
+        PlayerPrefs.Save();
+        levelschange.CheckingMapStatus();
         Player.SetActive(true);
         check_points.Camera.SetActive(false);
         Menu.SetActive(false);

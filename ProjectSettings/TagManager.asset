@@ -17,6 +17,7 @@ TagManager:
   - Accessory
   - Slider
   - Slider_Text
+  - Changer
   layers:
   - Default
   - TransparentFX
