@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public static Vector3 Latest_Checkpoint_ToVector3;
     public static int[] Cost_Panels_Active_Page_1 = new int[5];
     public static int[] Cost_Panels_Active_Page_2 = new int[5];
+    public static int CurrentIndexAccessory1 = -1;
+    public static int CurrentIndexAccessory2 = -1;
     [SerializeField] public GameObject Current_CostButton;
 
     

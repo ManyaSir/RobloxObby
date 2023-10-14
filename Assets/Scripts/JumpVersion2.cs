@@ -10,6 +10,7 @@ public class JumpVersion2 : MonoBehaviour
     private Rigidbody rb;
     public static bool isJumping = false;
     public static int JumpCountAnim = 0;
+    private bool IsGround = true;
 
     void Start()
     {
@@ -23,15 +24,18 @@ public class JumpVersion2 : MonoBehaviour
             rb.AddForce(new Vector3(0, jumpStrength, 0), ForceMode.Impulse);
             isJumping = true;
             JumpCountAnim = 2;
+            IsGround = false;
             playeranimations.JumpAnim();
+            Debug.Log("sfdhlksfdlhkshsh");
         }
 
-        if (rb.velocity.y < 0 && isJumping == true)
+        if (rb.velocity.y < 0 && rb.velocity.y != 0 && IsGround == false)
         {
             JumpCountAnim = 3;
             playeranimations.JumpAnim();
             Debug.Log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         }
+        
     }
 
     void OnCollisionEnter(Collision collision)
@@ -39,7 +43,12 @@ public class JumpVersion2 : MonoBehaviour
         if (!collision.gameObject.CompareTag("Death_Ground"))   
         {
             isJumping = false;
+            IsGround = true;
             FirstPersonMovement.IsWalk = 0;
+            playeranimations.WalkActive();
+        } else
+        {
+            IsGround = false;
         }
     }
 

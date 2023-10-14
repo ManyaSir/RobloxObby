@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerAnimations : MonoBehaviour
 {
     public Animator PlayerAnimator;
-    public Animation Jumping;
 
     void Start ()
     {

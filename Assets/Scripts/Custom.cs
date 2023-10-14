@@ -12,6 +12,9 @@ public class Custom : MonoBehaviour
     public GameManager gamemanager;
     [SerializeField] private GameObject CostButton;
     [SerializeField] private int IndexCost;
+    private int CurrentAccessoryIndex1 = -1;
+    private int CurrentAccessoryIndex2 = -1;
+
 
 
 
@@ -64,7 +67,6 @@ public class Custom : MonoBehaviour
                     if(Panel != null)
                     {
                         Panel.SetActive(false);
-                        Debug.Log("Cost" + i + " куплен");
                     }
                 }
             }
@@ -106,34 +108,71 @@ public class Custom : MonoBehaviour
                     }
                 }
             }
-            for(int i = 0; i != 5; i++)
+            CurrentAccessoryIndex1 = PlayerPrefs.GetInt("CurrentAccessory_1");
+            CurrentAccessoryIndex2 = PlayerPrefs.GetInt("CurrentAccessory_2");
+
+            GameObject[] CurrentAccessories = Resources.FindObjectsOfTypeAll<GameObject>();
+            foreach(GameObject CurrentAccessory in CurrentAccessories)
             {
-                Debug.Log("Массив 1 страница: " + GameManager.Cost_Panels_Active_Page_1[i]);
+                if(CurrentAccessory.name == "BackMarker1" + CurrentAccessoryIndex1)
+                {
+                    CurrentAccessory.SetActive(true);
+                    GameManager.CurrentIndexAccessory1 = CurrentAccessoryIndex1;
+                }
             }
-            for(int i = 0; i != 5; i++)
+            foreach(GameObject CurrentAccessory in CurrentAccessories)
             {
-                Debug.Log("Массив 2 страница: " + GameManager.Cost_Panels_Active_Page_2[i]);
+                if(CurrentAccessory.name == "BackMarker2" + CurrentAccessoryIndex2)
+                {
+                    CurrentAccessory.SetActive(true);
+                    GameManager.CurrentIndexAccessory2 = CurrentAccessoryIndex2;
+                }
             }
+
+
         }
     }
 
     public void Customing1()
     {
-        GameObject[] accessories = GameObject.FindGameObjectsWithTag("Accessory1");
-        foreach(GameObject accessory in accessories) 
+        
+        if (GameManager.CurrentIndexAccessory1 == Accessory_Index)
         {
-            accessory.SetActive(false);
+            Accessory.SetActive(false);    
+            PlayerPrefs.SetInt("CurrentAccessory_1", -1);
+            PlayerPrefs.Save();
+        } else 
+        {
+            GameObject[] accessories = GameObject.FindGameObjectsWithTag("Accessory1");
+            foreach(GameObject accessory in accessories) 
+            {
+                accessory.SetActive(false);
+            }
+            Accessory.SetActive(true);
+            PlayerPrefs.SetInt("CurrentAccessory_1", Accessory_Index);
+            PlayerPrefs.Save();
+            GameManager.CurrentIndexAccessory1 = Accessory_Index;
         }
-        Accessory.SetActive(true);
     }
     public void Customing2()
     {
-        GameObject[] accessories = GameObject.FindGameObjectsWithTag("Accessory2");
-        foreach(GameObject accessory in accessories) 
+        if (GameManager.CurrentIndexAccessory2 == Accessory_Index)
         {
-            accessory.SetActive(false);
+            Accessory.SetActive(false);    
+            PlayerPrefs.SetInt("CurrentAccessory_2", -1);
+            PlayerPrefs.Save();
+        } else
+        {
+            GameObject[] accessories = GameObject.FindGameObjectsWithTag("Accessory2");
+            foreach(GameObject accessory in accessories) 
+            {
+                accessory.SetActive(false);
+            }
+            Accessory.SetActive(true);
+            PlayerPrefs.SetInt("CurrentAccessory_2", Accessory_Index);
+            PlayerPrefs.Save();
+            GameManager.CurrentIndexAccessory2 = Accessory_Index;
         }
-        Accessory.SetActive(true);
     }
 
     public void Buy10_1()
