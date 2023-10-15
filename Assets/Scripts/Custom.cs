@@ -139,6 +139,7 @@ public class Custom : MonoBehaviour
         if (GameManager.CurrentIndexAccessory1 == Accessory_Index)
         {
             Accessory.SetActive(false);    
+            GameManager.CurrentIndexAccessory1 = -1;
             PlayerPrefs.SetInt("CurrentAccessory_1", -1);
             PlayerPrefs.Save();
         } else 
@@ -159,6 +160,7 @@ public class Custom : MonoBehaviour
         if (GameManager.CurrentIndexAccessory2 == Accessory_Index)
         {
             Accessory.SetActive(false);    
+            GameManager.CurrentIndexAccessory2 = -1;
             PlayerPrefs.SetInt("CurrentAccessory_2", -1);
             PlayerPrefs.Save();
         } else

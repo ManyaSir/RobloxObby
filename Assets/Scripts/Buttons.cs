@@ -40,7 +40,6 @@ public class Buttons : MonoBehaviour
         Player.SetActive(true);
         check_points.Camera.SetActive(false);
         Menu.SetActive(false);
-        Fone.SetActive(false);
         Game.SetActive(true);
         Progress.SetActive(true);
         gamemanager.UpInf();
@@ -57,7 +56,6 @@ public class Buttons : MonoBehaviour
         check_points.Camera.SetActive(false);
         check_points.FindDeletingCheckpoints();
         Menu.SetActive(false);
-        Fone.SetActive(false);
         Game.SetActive(true);
         Progress.SetActive(true);
         GameMusic.SetActive(true);
@@ -99,6 +97,11 @@ public class Buttons : MonoBehaviour
         Menu.SetActive(true);
         gamemanager.Current_CostButton.SetActive(false);
         Skins.SetActive(false);
+        if(CurrentPage == 2)
+        {
+            Page2.SetActive(false);
+            Page1.SetActive(true);
+        }
         CurrentPage = 1;
         NextButton.SetActive(true);
         BackButton.SetActive(false);
