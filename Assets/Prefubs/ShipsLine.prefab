@@ -980,7 +980,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3383340273854725839}
   m_Layer: 0
-  m_Name: jopa negra
+  m_Name: ShipsLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

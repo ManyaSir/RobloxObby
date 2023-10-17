@@ -2445,7 +2445,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2384189051793510594}
   m_Layer: 0
-  m_Name: molot
+  m_Name: Press1version
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
