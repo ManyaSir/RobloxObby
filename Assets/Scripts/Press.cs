@@ -1,22 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Mathematics;
 
 public class Press : MonoBehaviour
 {
- private float speedMove = 2.0f;
-    void Start()
-    {
-        
-    }
-
+    [SerializeField] private float3 StartPosition;
+    private bool isDown = true;
+    private float StartYPosition;
 
     void Update()
     {
-        Vector3 p = new Vector3(-22.652f, -3.892f, 14.861f);
-        p.x = -22.652f;
-        p.y = -3.87f;
-        p.z = 14.861f;
-        gameObject.transform.position = p;
+        if(isDown)
+        {
+            Debug.Log("StartPosition = " + StartPosition);
+            StartPosition.y += -0.005f;
+            //StartPosition.z = 0f;
+            if(StartPosition.y == -0.2f)
+            {
+                isDown = false;
+            }
+            this.transform.position = StartPosition;
+        }
+        
     }
 }
+
