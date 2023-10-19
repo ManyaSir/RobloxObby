@@ -5,22 +5,29 @@ using Unity.Mathematics;
 
 public class Press : MonoBehaviour
 {
-    [SerializeField] private float3 StartPosition;
-    private bool isDown = true;
-    private float StartYPosition;
+    [SerializeField] private float speed = 0.1f;
+    private bool IsDown = true;
+
+    
 
     void Update()
     {
-        if(isDown)
+        if(IsDown)
         {
-            Debug.Log("StartPosition = " + StartPosition);
-            StartPosition.y += -0.005f;
-            //StartPosition.z = 0f;
-            if(StartPosition.y == -0.2f)
+            this.transform.position -= new Vector3(0, speed, 0);
+            if(this.transform.position.y <= 1f)
             {
-                isDown = false;
+                IsDown = false;
+                Debug.Log("всёвсёсвсёвсвёвсвпфвып" + this.transform.position.y);
             }
-            this.transform.position = StartPosition;
+        } else if (!IsDown)
+        {
+            this.transform.position += new Vector3(0, speed, 0);
+            if(this.transform.position.y >= 4.478f)
+            {
+                IsDown = true;
+                Debug.Log("всёвсёсвсёвсвёвсвпфвып" + this.transform.position.y);
+            }
         }
         
     }
