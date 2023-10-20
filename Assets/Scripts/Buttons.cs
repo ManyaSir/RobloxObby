@@ -21,6 +21,7 @@ public class Buttons : MonoBehaviour
     [SerializeField] private GameObject BackButton;
     public Check_Points check_points;
     public GameManager gamemanager;
+    public FirstPersonLook firstpersonlook; 
     bool IsPauseActive = false;
     private int CurrentPage = 1;
     public LevelsChange levelschange;
@@ -46,6 +47,7 @@ public class Buttons : MonoBehaviour
         GameMusic.SetActive(true);
         MenuMusic.SetActive(false);
         check_points.SecondStart();
+        Cursor.lockState = CursorLockMode.Locked;
         //Debug.Log("NewGame has completed");
     }
 
@@ -61,14 +63,18 @@ public class Buttons : MonoBehaviour
         GameMusic.SetActive(true);
         MenuMusic.SetActive(false);
         gamemanager.UpInf();
+        Cursor.lockState = CursorLockMode.Locked;
+
     }
 
     public void BackGameMenu()
     {
         Player.SetActive(false);
+        check_points.Camera.transform.position = check_points.CameraPositionStart;
+        check_points.Camera.transform.rotation = check_points.CameraRotationStart;
+        firstpersonlook.FPL_Camera.SetActive(true);
         check_points.Camera.SetActive(true);
         Menu.SetActive(true);
-        Fone.SetActive(true);
         Game.SetActive(false);
         Progress.SetActive(false);
         Pause.SetActive(false);
@@ -109,6 +115,11 @@ public class Buttons : MonoBehaviour
 
     public void PauseButton()
     {
+        firstpersonlook.PauseDataSave();
+        check_points.Camera.transform.position = firstpersonlook.CameraPosition;
+        check_points.Camera.transform.rotation = firstpersonlook.CameraRotation;
+        check_points.Camera.SetActive(true);
+        firstpersonlook.FPL_Camera.SetActive(false);
         Pause.SetActive(true);
     }
 

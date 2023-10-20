@@ -26,6 +26,8 @@ namespace Assets.N.Fridman.SoundVolumeController.Scripts
         [Header("Parameters")]
         [Tooltip("Sound Volume Value")]
         [SerializeField] [Range(0.0f, 1.0f)] private float volume;
+        public static bool IsChanged = false;
+        public static int ChangeCount = 0;
     
         private void Awake()
         {    
@@ -49,6 +51,7 @@ namespace Assets.N.Fridman.SoundVolumeController.Scripts
                 this.volume = 0.5f;
                 PlayerPrefs.SetFloat(this.saveVolumeKey, this.volume);
                 this.audio.volume = this.volume;
+                IsChanged = true;
             }
         }
     
@@ -65,6 +68,7 @@ namespace Assets.N.Fridman.SoundVolumeController.Scripts
                 if (this.audio.volume != this.volume)
                 {
                     PlayerPrefs.SetFloat(this.saveVolumeKey, this.volume);
+                    IsChanged = true;
                 }
                 
                 // Search and connect text for volume output.

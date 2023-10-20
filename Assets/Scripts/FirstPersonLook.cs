@@ -2,8 +2,10 @@
 
 public class FirstPersonLook : MonoBehaviour
 {
-    [SerializeField]
-    Transform character;
+    [SerializeField] Transform character;
+    public Vector3 CameraPosition;
+    public Quaternion CameraRotation;
+    public GameObject FPL_Camera;
     public float sensitivity = 2;
     public float smoothing = 1.5f;
 
@@ -21,6 +23,7 @@ public class FirstPersonLook : MonoBehaviour
     {
         // Lock the mouse cursor to the game screen.
         Cursor.lockState = CursorLockMode.Locked;
+        FPL_Camera = this.gameObject;
     }
 
     void Update()
@@ -35,5 +38,14 @@ public class FirstPersonLook : MonoBehaviour
         // Rotate camera up-down and controller left-right from velocity.
         transform.localRotation = Quaternion.AngleAxis(-velocity.y, Vector3.right);
         character.localRotation = Quaternion.AngleAxis(velocity.x, Vector3.up);
+    }
+    public void PauseDataSave()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        CameraPosition = FPL_Camera.transform.position;
+        //Debug.Log("dfh");
+        CameraRotation = FPL_Camera.transform.rotation;
+        //Debug.Log("" + CameraRotation);
+
     }
 }

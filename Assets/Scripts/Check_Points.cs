@@ -12,6 +12,8 @@ public class Check_Points : MonoBehaviour
     [SerializeField] public Transform ZeroCount;
     [SerializeField] public Transform Latest_Checkpoint_count;
     [SerializeField] public GameObject Camera;
+    public Vector3 CameraPositionStart;
+    public Quaternion CameraRotationStart;
     public GameObject DestroyMoneyGameObject;
     public GameManager gamemanager;
 
@@ -22,7 +24,10 @@ public class Check_Points : MonoBehaviour
         if(this.CompareTag("Checkpoint"))
         {
             Latest_Checkpoint_count.transform.position = Spawn.transform.position;
+            CameraPositionStart = Camera.transform.position;
+            CameraRotationStart = Camera.transform.rotation;
         }
+        
         
     }
     
