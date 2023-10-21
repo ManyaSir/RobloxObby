@@ -11,7 +11,6 @@ public class Buttons : MonoBehaviour
     [SerializeField] private GameObject Pause;
     [SerializeField] public GameObject Player;
     [SerializeField] private GameObject Progress;
-    [SerializeField] private GameObject Fone;
     [SerializeField] private GameObject Game;
     [SerializeField] private GameObject GameMusic;
     [SerializeField] private GameObject MenuMusic;
@@ -19,12 +18,15 @@ public class Buttons : MonoBehaviour
     [SerializeField] private GameObject Page2;
     [SerializeField] private GameObject NextButton;
     [SerializeField] private GameObject BackButton;
+    [SerializeField] private AudioSource Click;
     public Check_Points check_points;
     public GameManager gamemanager;
     public FirstPersonLook firstpersonlook; 
     bool IsPauseActive = false;
     private int CurrentPage = 1;
     public LevelsChange levelschange;
+    public SoundControllerVersion2 soundcontrollerversion2;
+    public SoundControllerVersion3 soundcontrollerversion3;
 
 
     // public void Start()
@@ -34,6 +36,7 @@ public class Buttons : MonoBehaviour
     
     public void NewGame()
     {
+        Click.Play();
         check_points.ResetV2();
         PlayerPrefs.SetInt("MapStatus", 1);
         PlayerPrefs.Save();
@@ -48,11 +51,13 @@ public class Buttons : MonoBehaviour
         MenuMusic.SetActive(false);
         check_points.SecondStart();
         Cursor.lockState = CursorLockMode.Locked;
+        //Click.PlayOneShot(Click_Clip);
         //Debug.Log("NewGame has completed");
     }
 
     public void Continue()
     {
+        Click.Play();
         check_points.DestroyMoneyChild(check_points.DestroyMoneyGameObject);
         Player.SetActive(true);
         check_points.Camera.SetActive(false);
@@ -69,6 +74,7 @@ public class Buttons : MonoBehaviour
 
     public void BackGameMenu()
     {
+        Click.Play();
         Player.SetActive(false);
         check_points.Camera.transform.position = check_points.CameraPositionStart;
         check_points.Camera.transform.rotation = check_points.CameraRotationStart;
@@ -84,22 +90,28 @@ public class Buttons : MonoBehaviour
 
     public void SettingsButton()
     {
+        Click.Play();
         Settings.SetActive(true);
+        soundcontrollerversion2.UpdateInfoSound();
+        soundcontrollerversion3.UpdateInfoSound();
     }
 
     public void BackSettingsMenu()
     {
-        Settings.SetActive(false);
+        Click.Play();
+        //Settings.SetActive(false);
     }
 
     public void SkinsButton()
     {
+        Click.Play();
         Menu.SetActive(false);
         Skins.SetActive(true);
     }
 
     public void BackSkinsMenu()
     {
+        Click.Play();
         Menu.SetActive(true);
         gamemanager.Current_CostButton.SetActive(false);
         Skins.SetActive(false);
@@ -121,10 +133,13 @@ public class Buttons : MonoBehaviour
         check_points.Camera.SetActive(true);
         firstpersonlook.FPL_Camera.SetActive(false);
         Pause.SetActive(true);
+        soundcontrollerversion2.UpdateInfoSound();
+        soundcontrollerversion3.UpdateInfoSound();
     }
 
     public void BackPause()
     {
+        Click.Play();
         Pause.SetActive(false);
         // Player.SetActive(false);
         // check_points.Camera.SetActive(true);
@@ -147,6 +162,7 @@ public class Buttons : MonoBehaviour
     {
         if(CurrentPage == 1)
         {
+            Click.Play();
             Page2.SetActive(true);
             Page1.SetActive(false);
             NextButton.SetActive(false);
@@ -155,6 +171,7 @@ public class Buttons : MonoBehaviour
         } else if (CurrentPage == 2)
         {
             Page1.SetActive(true);
+            Click.Play();
             Page2.SetActive(false);
             NextButton.SetActive(true);
             BackButton.SetActive(false);

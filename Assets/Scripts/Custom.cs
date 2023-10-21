@@ -14,6 +14,7 @@ public class Custom : MonoBehaviour
     [SerializeField] private int IndexCost;
     private int CurrentAccessoryIndex1 = -1;
     private int CurrentAccessoryIndex2 = -1;
+    [SerializeField] private AudioSource Click;
 
 
 
@@ -138,12 +139,14 @@ public class Custom : MonoBehaviour
         
         if (GameManager.CurrentIndexAccessory1 == Accessory_Index)
         {
+            Click.Play();
             Accessory.SetActive(false);    
             GameManager.CurrentIndexAccessory1 = -1;
             PlayerPrefs.SetInt("CurrentAccessory_1", -1);
             PlayerPrefs.Save();
         } else 
         {
+            Click.Play();
             GameObject[] accessories = GameObject.FindGameObjectsWithTag("Accessory1");
             foreach(GameObject accessory in accessories) 
             {
@@ -159,12 +162,14 @@ public class Custom : MonoBehaviour
     {
         if (GameManager.CurrentIndexAccessory2 == Accessory_Index)
         {
+            Click.Play();
             Accessory.SetActive(false);    
             GameManager.CurrentIndexAccessory2 = -1;
             PlayerPrefs.SetInt("CurrentAccessory_2", -1);
             PlayerPrefs.Save();
         } else
         {
+            Click.Play();
             GameObject[] accessories = GameObject.FindGameObjectsWithTag("Accessory2");
             foreach(GameObject accessory in accessories) 
             {
@@ -181,6 +186,7 @@ public class Custom : MonoBehaviour
     {
         if(PlayerPrefs.GetInt("Money") >= 10)
         {
+            Click.Play();
             PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") - 10);
             PlayerPrefs.Save();
             GameManager.Cost_Panels_Active_Page_1[Accessory_Index] = 1;
@@ -197,6 +203,7 @@ public class Custom : MonoBehaviour
     {
         if(PlayerPrefs.GetInt("Money") >= 25)
         {
+            Click.Play();
             PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") - 25);
             PlayerPrefs.Save();
             GameManager.Cost_Panels_Active_Page_1[Accessory_Index] = 1;
@@ -213,6 +220,7 @@ public class Custom : MonoBehaviour
     {
         if(PlayerPrefs.GetInt("Money") >= 50)
         {
+            Click.Play();
             PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") - 50);
             PlayerPrefs.Save();
             GameManager.Cost_Panels_Active_Page_1[Accessory_Index] = 1;
@@ -229,6 +237,7 @@ public class Custom : MonoBehaviour
     {
         if(PlayerPrefs.GetInt("Money") >= 10)
         {
+            Click.Play();
             PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") - 10);
             PlayerPrefs.Save();
             GameManager.Cost_Panels_Active_Page_2[Accessory_Index] = 1;
@@ -245,6 +254,7 @@ public class Custom : MonoBehaviour
     {
         if(PlayerPrefs.GetInt("Money") >= 25)
         {
+            Click.Play();
             PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") - 25);
             PlayerPrefs.Save();
             GameManager.Cost_Panels_Active_Page_2[Accessory_Index] = 1;
@@ -261,6 +271,7 @@ public class Custom : MonoBehaviour
     {
         if(PlayerPrefs.GetInt("Money") >= 50)
         {
+            Click.Play();
             PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") - 50);
             PlayerPrefs.Save();
             GameManager.Cost_Panels_Active_Page_2[Accessory_Index] = 1;
@@ -290,6 +301,7 @@ public class Custom : MonoBehaviour
     
     public void Accessory_Cost_Button_1()
     {
+        Click.Play();
         gamemanager.Current_CostButton.SetActive(false);
         GameObject[] objects = Resources.FindObjectsOfTypeAll<GameObject>();
 
@@ -308,6 +320,7 @@ public class Custom : MonoBehaviour
 
     public void Accessory_Cost_Button_2()
     {
+        Click.Play();
         gamemanager.Current_CostButton.SetActive(false);
         GameObject[] objects = Resources.FindObjectsOfTypeAll<GameObject>();
 

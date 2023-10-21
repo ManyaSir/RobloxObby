@@ -14,14 +14,12 @@ public class PlayerAnimations : MonoBehaviour
     {
         
         PlayerAnimator.SetInteger("Animation_Number", JumpVersion2.JumpCountAnim);
-        Debug.Log("Current Animation_Number: " + PlayerAnimator.GetInteger("Animation_Number"));
     }
     public void WalkActive()
     {
         if(JumpVersion2.isJumping != true)
         {
             PlayerAnimator.SetInteger("Animation_Number", FirstPersonMovement.IsWalk);
-            Debug.Log("Current Animation_Number: " + PlayerAnimator.GetInteger("Animation_Number"));
         }
     
     }
@@ -30,7 +28,6 @@ public class PlayerAnimations : MonoBehaviour
         if(JumpVersion2.isJumping != true)
         {
             PlayerAnimator.SetInteger("Animation_Number", 0);
-            Debug.Log("Current Animation_Number: " + PlayerAnimator.GetInteger("Animation_Number"));
         }
     }
 }
