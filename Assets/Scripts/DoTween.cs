@@ -63,6 +63,7 @@ public class DoTween : MonoBehaviour
         //rectTransform.transform.localPosition = new Vector3 (0f,0f,0f);
         rectTransform.DOAnchorPos(new Vector2(0f,1000f),time,false).SetEase(Ease.InOutQuint);
         canvasGroup.DOFade(0, time);
+
     }
     
 
@@ -73,7 +74,7 @@ public class DoTween : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if(Input.GetKey(KeyCode.Escape))
         {

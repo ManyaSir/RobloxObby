@@ -45,6 +45,7 @@ public class Buttons : MonoBehaviour
         check_points.Camera.SetActive(false);
         Menu.SetActive(false);
         Game.SetActive(true);
+        Settings.SetActive(false);
         Progress.SetActive(true);
         gamemanager.UpInf();
         GameMusic.SetActive(true);
@@ -64,6 +65,7 @@ public class Buttons : MonoBehaviour
         check_points.FindDeletingCheckpoints();
         Menu.SetActive(false);
         Game.SetActive(true);
+        Settings.SetActive(false);
         Progress.SetActive(true);
         GameMusic.SetActive(true);
         MenuMusic.SetActive(false);
