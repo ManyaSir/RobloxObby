@@ -140,7 +140,7 @@ public class Buttons : MonoBehaviour
     public void BackPause()
     {
         Click.Play();
-        Pause.SetActive(false);
+        // Pause.SetActive(false);
         // Player.SetActive(false);
         // check_points.Camera.SetActive(true);
     }
