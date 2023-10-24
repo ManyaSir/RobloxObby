@@ -9,6 +9,9 @@ public class DoTween : MonoBehaviour
     public CanvasGroup canvasGroup;
     public RectTransform rectTransform;
     public List<GameObject> items = new List<GameObject>();
+    public Buttons buttons;
+    [SerializeField] private bool IsFadeIn;
+    public static bool IsActivePause = false;
 
     public void PanelFadeIn()
     {
@@ -16,6 +19,7 @@ public class DoTween : MonoBehaviour
         rectTransform.transform.localPosition = new Vector3 (0f,-1000f,0f);
         rectTransform.DOAnchorPos(new Vector2(0f,0f),time,false).SetEase(Ease.OutElastic);
         canvasGroup.DOFade(1, time);
+        IsActivePause = true;
     }
 
     public void PanelFadeOut()
@@ -24,6 +28,7 @@ public class DoTween : MonoBehaviour
         //rectTransform.transform.localPosition = new Vector3 (0f,0f,0f);
         rectTransform.DOAnchorPos(new Vector2(0f,-1000f),time,false).SetEase(Ease.InOutQuint);
         canvasGroup.DOFade(0, time);
+        IsActivePause = false;
     }
 
     public void MenuFadeIn()
@@ -76,9 +81,13 @@ public class DoTween : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.Escape))
+        if(IsFadeIn == true)
         {
-            PauseFadeIn();
+            if(Input.GetKey(KeyCode.Escape))
+            {
+                PauseFadeIn();
+            }
         }
+        
     }
 }
