@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class Buttons : MonoBehaviour
 {
@@ -31,12 +33,26 @@ public class Buttons : MonoBehaviour
     public LevelsChange levelschange;
     public SoundControllerVersion2 soundcontrollerversion2;
     public SoundControllerVersion3 soundcontrollerversion3;
+    private int IsStartScene = 0;
+    private int IsNeed = 0;
+
+    
 
 
-    // public void Start()
-    // {
-    //     gamemanager = GetComponent<GameManager>();
-    // }
+
+    void Start()
+    {
+        IsStartScene = PlayerPrefs.GetInt("StartSceneBool");
+        IsNeed = PlayerPrefs.GetInt("IsNeed");
+        if(IsStartScene == 0)
+        {
+            PlayerPrefs.SetInt("StartSceneBool", 1);
+            PlayerPrefs.SetInt("IsNeed", 1);
+            PlayerPrefs.Save();
+            SceneManager.LoadScene("Game 1");
+        }
+    }
+    
     
     public void NewGame()
     {
