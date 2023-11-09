@@ -16,10 +16,12 @@ public class SoundControllerVersion3 : MonoBehaviour
     public AudioSource audioSource4;
     public string SaveKey;
     private float volume;
+    public static bool IsReady = false;
 
     private void Start()
     {
         UpdateInfoSound();
+        IsReady = true;
     }
 
     public void SetVolume(int Index)

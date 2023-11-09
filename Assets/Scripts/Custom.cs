@@ -15,6 +15,7 @@ public class Custom : MonoBehaviour
     private int CurrentAccessoryIndex1 = -1;
     private int CurrentAccessoryIndex2 = -1;
     [SerializeField] private AudioSource Click;
+    public static bool IsReady = false;
 
 
 
@@ -129,7 +130,7 @@ public class Custom : MonoBehaviour
                     GameManager.CurrentIndexAccessory2 = CurrentAccessoryIndex2;
                 }
             }
-
+            IsReady = true;
 
         }
     }

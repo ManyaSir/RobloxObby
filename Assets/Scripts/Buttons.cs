@@ -35,6 +35,11 @@ public class Buttons : MonoBehaviour
     public SoundControllerVersion3 soundcontrollerversion3;
     private int IsStartScene = 0;
     private int IsNeed = 0;
+    [SerializeField] private GameObject Downloading_Obj;
+    private bool IsNeedRemoveDownloading = true;
+    [SerializeField] private GameObject Accessory_Controller;
+    [SerializeField] private GameObject Audio_Controller_2;
+    [SerializeField] private GameObject Audio_Controller_3;
 
     
 
@@ -42,21 +47,40 @@ public class Buttons : MonoBehaviour
 
     void Start()
     {
-        IsStartScene = PlayerPrefs.GetInt("StartSceneBool");
-        IsNeed = PlayerPrefs.GetInt("IsNeed");
-        if(IsStartScene == 0)
+        StartCoroutine(SpawnLoop());
+        Cursor.lockState = CursorLockMode.None;
+        Downloading_Obj.SetActive(true);
+        Audio_Controller_2.SetActive(true);
+        Audio_Controller_3.SetActive(true);
+        Accessory_Controller.SetActive(true);
+
+
+        IEnumerator SpawnLoop()
         {
-            PlayerPrefs.SetInt("StartSceneBool", 1);
-            PlayerPrefs.SetInt("IsNeed", 1);
-            PlayerPrefs.Save();
-            SceneManager.LoadScene("Game 1");
+            while(IsNeedRemoveDownloading)
+            {
+                yield return new WaitForSeconds(1f);
+                if( Custom.IsReady == true && SoundControllerVersion2.IsReady == true && SoundControllerVersion3.IsReady == true)
+                {
+                    Audio_Controller_3.SetActive(false);
+                    Accessory_Controller.SetActive(false);
+                    Downloading_Obj.SetActive(false);
+                    IsNeedRemoveDownloading = false;
+                }
+            }
         }
+        
+       
+
+
     }
     
     
     public void NewGame()
     {
         Click.Play();
+        Downloading_Obj.SetActive(true);
+        Audio_Controller_3.SetActive(true);
         check_points.ResetV2();
         PlayerPrefs.SetInt("MapStatus", 1);
         PlayerPrefs.Save();
@@ -72,10 +96,20 @@ public class Buttons : MonoBehaviour
         MenuMusic.SetActive(false);
         check_points.SecondStart();
         Cursor.lockState = CursorLockMode.Locked;
-        // Pause.SetActive(true);
-        // ButtonPause.enabled = false;
-        // PauseMeshRender.enabled = false;
-        // Pause.SetActive(false);
+        // IEnumerator SpawnLoop()
+        // {
+        //     IsNeedRemoveDownloading = true;
+        //     while(IsNeedRemoveDownloading)
+        //     {
+        //         yield return new WaitForSeconds(1f);
+        //         if( Custom.IsReady == true && SoundControllerVersion2.IsReady == true && SoundControllerVersion3.IsReady == true)
+        //         {
+        //             Audio_Controller_3.SetActive(false);
+        //             Downloading_Obj.SetActive(false);
+        //             IsNeedRemoveDownloading = false;
+        //         }
+        //     }
+        // }
     }
 
     public void Continue()
