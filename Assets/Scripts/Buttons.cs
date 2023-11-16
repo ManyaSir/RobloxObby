@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Threading;
 
 
 public class Buttons : MonoBehaviour
@@ -66,6 +67,8 @@ public class Buttons : MonoBehaviour
                     Accessory_Controller.SetActive(false);
                     Downloading_Obj.SetActive(false);
                     IsNeedRemoveDownloading = false;
+                    Audio_Controller_2.SetActive(false);
+
                 }
             }
         }
@@ -96,25 +99,29 @@ public class Buttons : MonoBehaviour
         MenuMusic.SetActive(false);
         check_points.SecondStart();
         Cursor.lockState = CursorLockMode.Locked;
-        // IEnumerator SpawnLoop()
-        // {
-        //     IsNeedRemoveDownloading = true;
-        //     while(IsNeedRemoveDownloading)
-        //     {
-        //         yield return new WaitForSeconds(1f);
-        //         if( Custom.IsReady == true && SoundControllerVersion2.IsReady == true && SoundControllerVersion3.IsReady == true)
-        //         {
-        //             Audio_Controller_3.SetActive(false);
-        //             Downloading_Obj.SetActive(false);
-        //             IsNeedRemoveDownloading = false;
-        //         }
-        //     }
-        // }
+        
+        IsNeedRemoveDownloading = true;
+        Invoke("checkingDownloading", 1f);
+    }
+
+    public void checkingDownloading()
+    {
+        while(IsNeedRemoveDownloading)
+        {
+            if(SoundControllerVersion2.IsReady == true && SoundControllerVersion3.IsReady == true)
+            {
+                Audio_Controller_3.SetActive(false);
+                Downloading_Obj.SetActive(false);
+                IsNeedRemoveDownloading = false;
+            }
+        }
     }
 
     public void Continue()
     {
         Click.Play();
+        Downloading_Obj.SetActive(true);
+        Audio_Controller_3.SetActive(true);
         check_points.DestroyMoneyChild(check_points.DestroyMoneyGameObject);
         Player.SetActive(true);
         check_points.Camera.SetActive(false);
@@ -127,10 +134,8 @@ public class Buttons : MonoBehaviour
         MenuMusic.SetActive(false);
         gamemanager.UpInf();
         Cursor.lockState = CursorLockMode.Locked;
-        // Pause.SetActive(true);
-        // ButtonPause.enabled = false;
-        // PauseMeshRender.enabled = false;
-        // Pause.SetActive(false);
+        IsNeedRemoveDownloading = true;
+        Invoke("checkingDownloading", 1f);
         
 
     }
