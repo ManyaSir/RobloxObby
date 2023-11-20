@@ -41,6 +41,8 @@ public class Buttons : MonoBehaviour
     [SerializeField] private GameObject Accessory_Controller;
     [SerializeField] private GameObject Audio_Controller_2;
     [SerializeField] private GameObject Audio_Controller_3;
+    [SerializeField] private GameObject RotationModel;
+    [SerializeField] private PlayerRotation RotationModelScript;
 
     
 
@@ -99,6 +101,7 @@ public class Buttons : MonoBehaviour
         MenuMusic.SetActive(false);
         check_points.SecondStart();
         Cursor.lockState = CursorLockMode.Locked;
+        RotationModel.SetActive(false);
         
         IsNeedRemoveDownloading = true;
         Invoke("checkingDownloading", 1f);
@@ -135,6 +138,7 @@ public class Buttons : MonoBehaviour
         gamemanager.UpInf();
         Cursor.lockState = CursorLockMode.Locked;
         IsNeedRemoveDownloading = true;
+        RotationModel.SetActive(false);
         Invoke("checkingDownloading", 1f);
         
 
@@ -155,6 +159,7 @@ public class Buttons : MonoBehaviour
         Pause.SetActive(false);
         GameMusic.SetActive(false);
         MenuMusic.SetActive(true);
+        RotationModel.SetActive(true);
     }
 
     public void SettingsButton()
@@ -163,12 +168,15 @@ public class Buttons : MonoBehaviour
         Settings.SetActive(true);
         soundcontrollerversion2.UpdateInfoSound();
         soundcontrollerversion3.UpdateInfoSound();
+        RotationModelScript.enabled = false;
+
     }
 
     public void BackSettingsMenu()
     {
         Click.Play();
-        //Settings.SetActive(false);
+        RotationModelScript.enabled = true;
+
     }
 
     public void SkinsButton()

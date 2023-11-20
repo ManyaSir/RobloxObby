@@ -11,7 +11,7 @@ public class PlayerRotation : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivity;
+            float rotationX = transform.localEulerAngles.y - Input.GetAxis("Mouse X") * sensitivity;
 
             // Ограничиваем вращение персонажа по горизонтали
             transform.localEulerAngles = new Vector3(0, rotationX, 0);
