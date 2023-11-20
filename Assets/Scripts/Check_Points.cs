@@ -16,6 +16,11 @@ public class Check_Points : MonoBehaviour
     public Quaternion CameraRotationStart;
     public GameObject DestroyMoneyGameObject;
     public GameManager gamemanager;
+    [SerializeField] private GameObject GameOverMenu;
+    [SerializeField] private GameObject GameOverTextV1;
+    [SerializeField] private GameObject GameOverTextV2;
+    [SerializeField] private GameObject GameOverTextV3;
+    
 
     public static bool IsMoneyCountChanged = false;
     
@@ -85,19 +90,30 @@ public class Check_Points : MonoBehaviour
         }
         if(this.CompareTag("Death_Ground") && other.CompareTag("Player"))
         {
-            GameManager.Latest_Checkpoint_pos = PlayerPrefs.GetString("StringLatest_Checkpoint");  
+            // GameManager.Latest_Checkpoint_pos = PlayerPrefs.GetString("StringLatest_Checkpoint");  
             
-            GameManager.Latest_Checkpoint_ToVector3 = StringToVector3(GameManager.Latest_Checkpoint_pos);  
+            // GameManager.Latest_Checkpoint_ToVector3 = StringToVector3(GameManager.Latest_Checkpoint_pos);  
                 
             
-            Latest_Checkpoint_count.transform.position = GameManager.Latest_Checkpoint_ToVector3;  
+            // Latest_Checkpoint_count.transform.position = GameManager.Latest_Checkpoint_ToVector3;  
                 
             
-            Latest_Checkpoint.transform.position = Latest_Checkpoint_count.transform.position;  
+            // Latest_Checkpoint.transform.position = Latest_Checkpoint_count.transform.position;  
                 
             
-            Player.transform.position = Latest_Checkpoint.transform.position;  
-            gamemanager.UpInf();
+            // Player.transform.position = Latest_Checkpoint.transform.position;  
+            // gamemanager.UpInf();
+            GameOverMenu.SetActive(true);
+            if(this.name == "Death_Ground")
+            {
+                GameOverTextV1.SetActive(true);
+            } else if(this.name == "Press")
+            {
+                GameOverTextV2.SetActive(true);
+            } else if (this.name == "PressWithThorns")
+            {
+                GameOverTextV3.SetActive(true);
+            }
 
         }
         if(this.CompareTag("Latest_Checkpoint") && other.CompareTag("Checkpoint"))
@@ -182,25 +198,45 @@ public class Check_Points : MonoBehaviour
     // }
 
     public void FindDeletingCheckpoints()
-{
-    for (int i = 0; i != GameManager.Current_Lvl + 1; i++)
     {
-        GameObject[] deleteCheckpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
-        foreach (GameObject checkpoint in deleteCheckpoints)
+        for (int i = 0; i != GameManager.Current_Lvl + 1; i++)
         {
-            if (checkpoint.name == "Checkpoint " + i)
+            GameObject[] deleteCheckpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
+            foreach (GameObject checkpoint in deleteCheckpoints)
             {
-                if (i == GameManager.Current_Lvl)
+                if (checkpoint.name == "Checkpoint " + i)
                 {
-                    GameObject deleteMoney = checkpoint.transform.Find("Money").gameObject;
-                    Destroy(deleteMoney);
+                    if (i == GameManager.Current_Lvl)
+                    {
+                        GameObject deleteMoney = checkpoint.transform.Find("Money").gameObject;
+                        Destroy(deleteMoney);
+                    }
+                    Destroy(checkpoint);
+                    break;
                 }
-                Destroy(checkpoint);
-                break;
             }
         }
-    }
-}
+
+    
+   }
+
+   public void DeathGroundAndPlayer()
+   {
+        Debug.Log("Начало");
+        GameManager.Latest_Checkpoint_pos = PlayerPrefs.GetString("StringLatest_Checkpoint");  
+            
+        GameManager.Latest_Checkpoint_ToVector3 = StringToVector3(GameManager.Latest_Checkpoint_pos);  
+                
+            
+        Latest_Checkpoint_count.transform.position = GameManager.Latest_Checkpoint_ToVector3;  
+                
+            
+        Latest_Checkpoint.transform.position = Latest_Checkpoint_count.transform.position;  
+                
+            
+        Player.transform.position = Latest_Checkpoint.transform.position;  
+        gamemanager.UpInf();
+   }
     
     
     

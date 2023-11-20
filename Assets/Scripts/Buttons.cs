@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Threading;
+using System.Numerics;
 
 
 public class Buttons : MonoBehaviour
@@ -43,7 +44,6 @@ public class Buttons : MonoBehaviour
     [SerializeField] private GameObject Audio_Controller_3;
     [SerializeField] private GameObject RotationModel;
     [SerializeField] private PlayerRotation RotationModelScript;
-
     
 
 
@@ -217,6 +217,7 @@ public class Buttons : MonoBehaviour
         Pause.SetActive(true);
         soundcontrollerversion2.UpdateInfoSound();
         soundcontrollerversion3.UpdateInfoSound();
+
     }
 
     public void BackPause()
