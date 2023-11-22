@@ -44,6 +44,8 @@ public class Buttons : MonoBehaviour
     [SerializeField] private GameObject Audio_Controller_3;
     [SerializeField] private GameObject RotationModel;
     [SerializeField] private PlayerRotation RotationModelScript;
+    public DoTween dotween;
+
     
 
 
@@ -147,6 +149,7 @@ public class Buttons : MonoBehaviour
     public void BackGameMenu()
     {
         Click.Play();
+        check_points.DeathGroundAndPlayer();
         Cursor.lockState = CursorLockMode.None;
         Player.SetActive(false);
         check_points.Camera.transform.position = check_points.CameraPositionStart;
@@ -160,6 +163,11 @@ public class Buttons : MonoBehaviour
         GameMusic.SetActive(false);
         MenuMusic.SetActive(true);
         RotationModel.SetActive(true);
+        // check_points.GameOverMenu.SetActive(false);
+        // check_points.GameOverTextV1.SetActive(false);
+        // check_points.GameOverTextV2.SetActive(false);
+        // check_points.GameOverTextV3.SetActive(false);
+        // check_points.PlayerModel.SetActive(true);
     }
 
     public void SettingsButton()
@@ -242,10 +250,12 @@ public class Buttons : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(Input.GetKey(KeyCode.Escape) && Game.activeSelf)
+        if(Input.GetKey(KeyCode.Escape) && Game.activeSelf && !Check_Points.IsGameOver)
         {
             if (DoTween.IsActivePause)
             {
+                //BackPause();
+                dotween.PauseFadeOut();
                 
             } else PauseButton();
         }

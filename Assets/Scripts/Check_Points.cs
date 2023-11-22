@@ -16,10 +16,18 @@ public class Check_Points : MonoBehaviour
     public Quaternion CameraRotationStart;
     public GameObject DestroyMoneyGameObject;
     public GameManager gamemanager;
-    [SerializeField] private GameObject GameOverMenu;
-    [SerializeField] private GameObject GameOverTextV1;
-    [SerializeField] private GameObject GameOverTextV2;
-    [SerializeField] private GameObject GameOverTextV3;
+    [SerializeField] public GameObject GameOverMenu;
+    [SerializeField] public GameObject GameOverTextV1;
+    [SerializeField] public GameObject GameOverTextV2;
+    [SerializeField] public GameObject GameOverTextV3;
+    [SerializeField] private FirstPersonMovement firstpersonmovementscript;
+    [SerializeField] private JumpVersion2 jumpversion2Script;
+    public static bool IsGameOver = false;
+    public FirstPersonLook firstpersonlook; 
+    [SerializeField] public GameObject PlayerModel;
+    public Buttons buttons;
+    public DoTween dotween;
+
     
 
     public static bool IsMoneyCountChanged = false;
@@ -103,7 +111,20 @@ public class Check_Points : MonoBehaviour
             
             // Player.transform.position = Latest_Checkpoint.transform.position;  
             // gamemanager.UpInf();
+            buttons.BackPause();
+            dotween.PauseFadeOut();
+            PlayerModel.SetActive(false);
+            firstpersonlook.PauseDataSave();
+            Cursor.lockState = CursorLockMode.None;
+            Camera.transform.position = firstpersonlook.CameraPosition;
+            Camera.transform.rotation = firstpersonlook.CameraRotation;
+            firstpersonmovementscript.enabled = false;
+            jumpversion2Script.enabled = false;
+            Camera.SetActive(true);
+            firstpersonlook.FPL_Camera.SetActive(false);
+            IsGameOver = true;
             GameOverMenu.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
             if(this.name == "Death_Ground")
             {
                 GameOverTextV1.SetActive(true);
@@ -223,6 +244,7 @@ public class Check_Points : MonoBehaviour
    public void DeathGroundAndPlayer()
    {
         Debug.Log("Начало");
+        IsGameOver = false;
         GameManager.Latest_Checkpoint_pos = PlayerPrefs.GetString("StringLatest_Checkpoint");  
             
         GameManager.Latest_Checkpoint_ToVector3 = StringToVector3(GameManager.Latest_Checkpoint_pos);  
@@ -235,6 +257,20 @@ public class Check_Points : MonoBehaviour
                 
             
         Player.transform.position = Latest_Checkpoint.transform.position;  
+        Cursor.lockState = CursorLockMode.Locked;
+        GameOverMenu.SetActive(false);
+        GameOverTextV1.SetActive(false);
+        GameOverTextV2.SetActive(false);
+        GameOverTextV3.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        firstpersonlook.FPL_Camera.SetActive(true);
+        Camera.SetActive(false);
+        Camera.transform.position = CameraPositionStart;
+        Camera.transform.rotation = CameraRotationStart;
+        firstpersonmovementscript.enabled = true;
+        jumpversion2Script.enabled = true;
+        PlayerModel.SetActive(true);
+
         gamemanager.UpInf();
    }
     
