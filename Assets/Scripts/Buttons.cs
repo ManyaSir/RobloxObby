@@ -45,6 +45,9 @@ public class Buttons : MonoBehaviour
     [SerializeField] private GameObject RotationModel;
     [SerializeField] private PlayerRotation RotationModelScript;
     public DoTween dotween;
+    private bool Process = false;
+    float delayStartTime;
+    public DoTween dotween2;
 
     
 
@@ -241,6 +244,10 @@ public class Buttons : MonoBehaviour
         
         
     }
+    void StartDelay()
+    {
+        delayStartTime = Time.time;
+    }
 
     public void JumpUpdate()
     {
@@ -248,7 +255,7 @@ public class Buttons : MonoBehaviour
         Debug.Log($"{JumpVersion2.jumpStrength}");
     }  
 
-    void FixedUpdate()
+    void Update()
     {
         // if(Input.GetKey(KeyCode.Escape) && Game.activeSelf && !Check_Points.IsGameOver)
         // {
@@ -265,7 +272,7 @@ public class Buttons : MonoBehaviour
                 
         //     }
         // }
-        Invoke("EscInput", 1f);
+        Invoke("EscInput", 2f);
     }
     public void NextPage()
     {
@@ -291,21 +298,26 @@ public class Buttons : MonoBehaviour
 
     public void EscInput()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && Game.activeSelf && !Check_Points.IsGameOver)
-        {
-            if (DoTween.IsActivePause)
+        if(!Process)
+        {    
+            if(Input.GetKey(KeyCode.Escape) && Game.activeSelf && !Check_Points.IsGameOver)
             {
-                dotween.PauseFadeOut();
-                BackPause();
-                Debug.Log("Закрывашка дотвин");
-                
-            } else 
-            {
-                PauseButton();
-                dotween.PauseFadeIn();
-                Debug.Log("Открывашка пауза");
-
-                
+                if (DoTween.IsActivePause)
+                {
+                    Process = true;
+                    dotween.PauseFadeOut();
+                    BackPause();
+                    Debug.Log("Закрывашка дотвин");
+                    Process = false;
+                    
+                } else 
+                {
+                    Process = true;
+                    PauseButton();
+                    dotween.PauseFadeIn();
+                    Debug.Log("Открывашка пауза");
+                    Process = false;  
+                }
             }
         }
     }

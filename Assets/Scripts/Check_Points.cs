@@ -29,6 +29,9 @@ public class Check_Points : MonoBehaviour
     public DoTween dotween;
     public Collider PlayerCollider;
 
+    public DoTween dotween2;
+
+
     
 
     public static bool IsMoneyCountChanged = false;
@@ -137,6 +140,7 @@ public class Check_Points : MonoBehaviour
             {
                 GameOverTextV3.SetActive(true);
             }
+            dotween2.PauseFadeIn();
 
         }
         if(this.CompareTag("Latest_Checkpoint") && other.CompareTag("Checkpoint"))
@@ -246,6 +250,7 @@ public class Check_Points : MonoBehaviour
    public void DeathGroundAndPlayer()
    {
         Debug.Log("Начало");
+        dotween2.PauseFadeOut();
         IsGameOver = false;
         GameManager.Latest_Checkpoint_pos = PlayerPrefs.GetString("StringLatest_Checkpoint");  
             
@@ -260,7 +265,7 @@ public class Check_Points : MonoBehaviour
             
         Player.transform.position = Latest_Checkpoint.transform.position;  
         Cursor.lockState = CursorLockMode.Locked;
-        GameOverMenu.SetActive(false);
+        //GameOverMenu.SetActive(false);
         GameOverTextV1.SetActive(false);
         GameOverTextV2.SetActive(false);
         GameOverTextV3.SetActive(false);
