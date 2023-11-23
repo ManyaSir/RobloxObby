@@ -17,7 +17,7 @@ public class Press : MonoBehaviour
             if(this.transform.position.y <= 1f)
             {
                 IsDown = false;
-                Debug.Log("всёвсёсвсёвсвёвсвпфвып" + this.transform.position.y);
+                
             }
         } else if (!IsDown)
         {
@@ -25,7 +25,7 @@ public class Press : MonoBehaviour
             if(this.transform.position.y >= 4.478f)
             {
                 IsDown = true;
-                Debug.Log("всёвсёсвсёвсвёвсвпфвып" + this.transform.position.y);
+                
             }
         }
         

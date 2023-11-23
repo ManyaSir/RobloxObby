@@ -27,6 +27,7 @@ public class Check_Points : MonoBehaviour
     [SerializeField] public GameObject PlayerModel;
     public Buttons buttons;
     public DoTween dotween;
+    public Collider PlayerCollider;
 
     
 
@@ -125,6 +126,7 @@ public class Check_Points : MonoBehaviour
             IsGameOver = true;
             GameOverMenu.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
+            PlayerCollider.enabled = false;
             if(this.name == "Death_Ground")
             {
                 GameOverTextV1.SetActive(true);
@@ -270,6 +272,7 @@ public class Check_Points : MonoBehaviour
         firstpersonmovementscript.enabled = true;
         jumpversion2Script.enabled = true;
         PlayerModel.SetActive(true);
+        PlayerCollider.enabled = true;
 
         gamemanager.UpInf();
    }

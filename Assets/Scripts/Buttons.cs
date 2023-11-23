@@ -250,15 +250,22 @@ public class Buttons : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(Input.GetKey(KeyCode.Escape) && Game.activeSelf && !Check_Points.IsGameOver)
-        {
-            if (DoTween.IsActivePause)
-            {
-                //BackPause();
-                dotween.PauseFadeOut();
+        // if(Input.GetKey(KeyCode.Escape) && Game.activeSelf && !Check_Points.IsGameOver)
+        // {
+        //     if (DoTween.IsActivePause)
+        //     {
+        //         dotween.PauseFadeOut();
+        //         Debug.Log("Закрывашка дотвин");
                 
-            } else PauseButton();
-        }
+        //     } else 
+        //     {
+        //         PauseButton();
+        //         Debug.Log("Открывашка пауза");
+
+                
+        //     }
+        // }
+        Invoke("EscInput", 1f);
     }
     public void NextPage()
     {
@@ -279,6 +286,27 @@ public class Buttons : MonoBehaviour
             BackButton.SetActive(false);
             CurrentPage = 1;
 
+        }
+    }
+
+    public void EscInput()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape) && Game.activeSelf && !Check_Points.IsGameOver)
+        {
+            if (DoTween.IsActivePause)
+            {
+                dotween.PauseFadeOut();
+                BackPause();
+                Debug.Log("Закрывашка дотвин");
+                
+            } else 
+            {
+                PauseButton();
+                dotween.PauseFadeIn();
+                Debug.Log("Открывашка пауза");
+
+                
+            }
         }
     }
     

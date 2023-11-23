@@ -80,15 +80,15 @@ public class DoTween : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if(IsFadeIn == true)
-        {
-            if(Input.GetKey(KeyCode.Escape))
-            {
-                PauseFadeIn();
-            }
-        }
+    // void Update()
+    // {
+    //     if(IsFadeIn == true)
+    //     {
+    //         if(Input.GetKey(KeyCode.Escape))
+    //         {
+    //             PauseFadeIn();
+    //         }
+    //     }
         
-    }
+    // }
 }
