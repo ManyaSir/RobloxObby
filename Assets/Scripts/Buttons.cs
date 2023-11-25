@@ -257,22 +257,26 @@ public class Buttons : MonoBehaviour
 
     void Update()
     {
-        // if(Input.GetKey(KeyCode.Escape) && Game.activeSelf && !Check_Points.IsGameOver)
-        // {
-        //     if (DoTween.IsActivePause)
-        //     {
-        //         dotween.PauseFadeOut();
-        //         Debug.Log("Закрывашка дотвин");
-                
-        //     } else 
-        //     {
-        //         PauseButton();
-        //         Debug.Log("Открывашка пауза");
+        if(Input.GetKeyDown(KeyCode.Escape) && Game.activeSelf && !Check_Points.IsGameOver)
+        {
+            
+            if (DoTween.IsActivePause)
+            {
+                BackPause();
+                dotween.PauseFadeOut();
+                Debug.Log("Закрывашка дотвин");
+            } else 
+            {
+                PauseButton();
+                dotween.PauseFadeIn();
+                Debug.Log("Открывашка пауза");
+            }
+        }
+        if (DoTween.IsActivePause)
+        {
+            Player.transform.Rotate(0,1.6f,0);
 
-                
-        //     }
-        // }
-        Invoke("EscInput", 2f);
+        }
     }
     public void NextPage()
     {
@@ -296,30 +300,5 @@ public class Buttons : MonoBehaviour
         }
     }
 
-    public void EscInput()
-    {
-        if(!Process)
-        {    
-            if(Input.GetKey(KeyCode.Escape) && Game.activeSelf && !Check_Points.IsGameOver)
-            {
-                if (DoTween.IsActivePause)
-                {
-                    Process = true;
-                    dotween.PauseFadeOut();
-                    BackPause();
-                    Debug.Log("Закрывашка дотвин");
-                    Process = false;
-                    
-                } else 
-                {
-                    Process = true;
-                    PauseButton();
-                    dotween.PauseFadeIn();
-                    Debug.Log("Открывашка пауза");
-                    Process = false;  
-                }
-            }
-        }
-    }
     
 }

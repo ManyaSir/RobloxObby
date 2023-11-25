@@ -197,32 +197,6 @@ public class Check_Points : MonoBehaviour
         
 
     }
-    // public void FindDeletingCheckpoints()
-    // {
-    //     GameObject DeleteCheckpoints;
-    //     for (int i = 0; i != GameManager.Current_Lvl + 1; i++)
-    //     {
-    //         if (i == GameManager.Current_Lvl)
-    //         {
-    //             DeleteCheckpoints = GameObject.Find("Checkpoint " + i);
-    //             if(DeleteCheckpoints == null)
-    //             {
-    //                 Debug.Log("EROROROROROROROROROORO!OR!OR!O!RO!RO!RO!R");
-    //             }
-    //             GameObject deleteMoney = DeleteCheckpoints.GetComponentInChildren<Transform>().Find("Money").gameObject;
-    //             Destroy(deleteMoney.gameObject);
-    //         } else 
-    //         {
-    //             DeleteCheckpoints = GameObject.Find("Checkpoint " + i);
-    //             if(DeleteCheckpoints == null)
-    //             {
-    //                 Debug.Log("EROROROROROROROROROORO!OR!OR!O!RO!RO!RO!R");
-    //             }
-    //             Destroy(DeleteCheckpoints.gameObject);
-    //         }
-                    
-    //     }
-    // }
 
     public void FindDeletingCheckpoints()
     {
@@ -235,17 +209,21 @@ public class Check_Points : MonoBehaviour
                 {
                     if (i == GameManager.Current_Lvl)
                     {
-                        GameObject deleteMoney = checkpoint.transform.Find("Money").gameObject;
-                        Destroy(deleteMoney);
+                        if(checkpoint != null )
+                        {
+                            if(checkpoint.transform.Find("Money") != null) 
+                            {
+                                GameObject deleteMoney = checkpoint.transform.Find("Money").gameObject;
+                                Destroy(deleteMoney);
+                            }
+                        }
                     }
                     Destroy(checkpoint);
                     break;
                 }
             }
         }
-
-    
-   }
+    }
 
    public void DeathGroundAndPlayer()
    {
