@@ -20,6 +20,7 @@ public class Check_Points : MonoBehaviour
     [SerializeField] public GameObject GameOverTextV1;
     [SerializeField] public GameObject GameOverTextV2;
     [SerializeField] public GameObject GameOverTextV3;
+    [SerializeField] private AudioSource DeathSound;
     [SerializeField] private FirstPersonMovement firstpersonmovementscript;
     [SerializeField] private JumpVersion2 jumpversion2Script;
     public static bool IsGameOver = false;
@@ -82,12 +83,15 @@ public class Check_Points : MonoBehaviour
 
         if (this.CompareTag("Money") && other.CompareTag("Player")) 
         { 
+            Buttons.IsPlayMoneySound = true;
             IsMoneyCountChanged = true; 
             Destroy(this.gameObject); 
 
-            if (gamemanager != null) {
+            if (gamemanager != null) 
+            {
                 gamemanager.UpInf();
             }
+
         } 
         if(this.CompareTag("Checkpoint") && other.CompareTag("Player"))
         {
@@ -128,6 +132,7 @@ public class Check_Points : MonoBehaviour
             firstpersonlook.FPL_Camera.SetActive(false);
             IsGameOver = true;
             GameOverMenu.SetActive(true);
+            DeathSound.Play();
             Cursor.lockState = CursorLockMode.None;
             PlayerCollider.enabled = false;
             if(this.name == "Death_Ground")

@@ -48,6 +48,8 @@ public class Buttons : MonoBehaviour
     private bool Process = false;
     float delayStartTime;
     public DoTween dotween2;
+    [SerializeField] public AudioSource MoneySounds;
+    public static bool IsPlayMoneySound = false;
 
     
 
@@ -102,27 +104,23 @@ public class Buttons : MonoBehaviour
         Settings.SetActive(false);
         Progress.SetActive(true);
         gamemanager.UpInf();
-        GameMusic.SetActive(true);
-        MenuMusic.SetActive(false);
+        
         check_points.SecondStart();
         Cursor.lockState = CursorLockMode.Locked;
         RotationModel.SetActive(false);
         
-        IsNeedRemoveDownloading = true;
+        //IsNeedRemoveDownloading = true;
         Invoke("checkingDownloading", 1f);
     }
 
     public void checkingDownloading()
     {
-        while(IsNeedRemoveDownloading)
-        {
-            if(SoundControllerVersion2.IsReady == true && SoundControllerVersion3.IsReady == true)
-            {
-                Audio_Controller_3.SetActive(false);
-                Downloading_Obj.SetActive(false);
-                IsNeedRemoveDownloading = false;
-            }
-        }
+        soundcontrollerversion2.UpdateInfoSound();
+        soundcontrollerversion3.UpdateInfoSound();
+        Audio_Controller_3.SetActive(false);
+        Downloading_Obj.SetActive(false);
+        GameMusic.SetActive(true);
+        MenuMusic.SetActive(false);
     }
 
     public void Continue()
@@ -138,8 +136,6 @@ public class Buttons : MonoBehaviour
         Game.SetActive(true);
         Settings.SetActive(false);
         Progress.SetActive(true);
-        GameMusic.SetActive(true);
-        MenuMusic.SetActive(false);
         gamemanager.UpInf();
         Cursor.lockState = CursorLockMode.Locked;
         IsNeedRemoveDownloading = true;
@@ -152,6 +148,8 @@ public class Buttons : MonoBehaviour
     public void BackGameMenu()
     {
         Click.Play();
+        Downloading_Obj.SetActive(true);
+        Settings.SetActive(true);
         check_points.DeathGroundAndPlayer();
         Cursor.lockState = CursorLockMode.None;
         Player.SetActive(false);
@@ -163,14 +161,19 @@ public class Buttons : MonoBehaviour
         Game.SetActive(false);
         Progress.SetActive(false);
         Pause.SetActive(false);
+        RotationModel.SetActive(true);
+        Invoke("BackGameDownloading", 1f);
+        
+    }
+
+    public void BackGameDownloading()
+    {
+        soundcontrollerversion2.UpdateInfoSound();
+        soundcontrollerversion3.UpdateInfoSound();
+        Downloading_Obj.SetActive(false);
+        Settings.SetActive(false);
         GameMusic.SetActive(false);
         MenuMusic.SetActive(true);
-        RotationModel.SetActive(true);
-        // check_points.GameOverMenu.SetActive(false);
-        // check_points.GameOverTextV1.SetActive(false);
-        // check_points.GameOverTextV2.SetActive(false);
-        // check_points.GameOverTextV3.SetActive(false);
-        // check_points.PlayerModel.SetActive(true);
     }
 
     public void SettingsButton()
@@ -277,6 +280,11 @@ public class Buttons : MonoBehaviour
             Player.transform.Rotate(0,1.6f,0);
 
         }
+        if(IsPlayMoneySound)
+        {
+            MoneySounds.Play();
+            IsPlayMoneySound = false;
+        }
     }
     public void NextPage()
     {
@@ -300,5 +308,6 @@ public class Buttons : MonoBehaviour
         }
     }
 
+    
     
 }

@@ -30,7 +30,7 @@ public class SoundControllerVersion3 : MonoBehaviour
         {
             volume = volumeSlider1.value;
             audioSource1.volume = volume;
-            audioSource2.volume = volume;
+            audioSource2.volume = (volume / 2) / 2;
             audioSource3.volume = volume;
             audioSource4.volume = volume;
             volumeText1.text = Mathf.RoundToInt(volume * 100f) + "%";
@@ -41,7 +41,7 @@ public class SoundControllerVersion3 : MonoBehaviour
         {
             volume = volumeSlider2.value;
             audioSource1.volume = volume;
-            audioSource2.volume = volume;
+            audioSource2.volume = (volume / 2) / 2;
             audioSource3.volume = volume;
             audioSource4.volume = volume;
             volumeText2.text = Mathf.RoundToInt(volume * 100f) + "%";
