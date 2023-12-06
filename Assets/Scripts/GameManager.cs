@@ -19,6 +19,11 @@ public class GameManager : MonoBehaviour
     public static int[] Cost_Panels_Active_Page_2 = new int[5];
     public static int CurrentIndexAccessory1 = -1;
     public static int CurrentIndexAccessory2 = -1;
+    [SerializeField] private Image Continue;
+    [SerializeField] private Sprite greenSprite;
+    [SerializeField] private Sprite redSprite;
+    [SerializeField] private GameObject Block;
+
     [SerializeField] public GameObject Current_CostButton;
 
     
@@ -44,6 +49,15 @@ public class GameManager : MonoBehaviour
             Check_Points.IsMoneyCountChanged = false;
             UpInf();
             
+        }
+        if(PlayerPrefs.GetInt("Current_Lvl") != 0)
+        {
+            Block.SetActive(false);
+            Continue.sprite = greenSprite;
+        } else
+        {
+            Block.SetActive(true);
+            Continue.sprite = redSprite;
         }
     }
 

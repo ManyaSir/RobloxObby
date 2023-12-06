@@ -8,6 +8,7 @@ public class LevelsChange : MonoBehaviour
     [SerializeField] private GameObject Map1;
     [SerializeField] private GameObject Map2;
     [SerializeField] private Collider Changer;
+    [SerializeField] private GameObject Player;
 
     void Start()
     {
@@ -20,6 +21,8 @@ public class LevelsChange : MonoBehaviour
         {
             ChangerLevels();
             Changer.enabled = false;
+            Player.SetActive(true);
+            Debug.Log("ChangerPlayer");
         }
     }
 
