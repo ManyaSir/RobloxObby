@@ -50,6 +50,7 @@ public class Buttons : MonoBehaviour
     public DoTween dotween2;
     [SerializeField] public AudioSource MoneySounds;
     public static bool IsPlayMoneySound = false;
+    private UnityEngine.Quaternion CurrentRotationPlayer;
 
     
 
@@ -57,6 +58,7 @@ public class Buttons : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("" + PlayerPrefs.GetInt("MapStatus"));
         StartCoroutine(SpawnLoop());
         Cursor.lockState = CursorLockMode.None;
         Downloading_Obj.SetActive(true);
@@ -80,7 +82,10 @@ public class Buttons : MonoBehaviour
 
                 }
             }
+            //levelschange.CheckingMapStatus();
+            Debug.Log("ВЫполнилось!");
         }
+        
         
        
 
@@ -91,10 +96,11 @@ public class Buttons : MonoBehaviour
     public void NewGame()
     {
         Click.Play();
+        
         Downloading_Obj.SetActive(true);
         Audio_Controller_3.SetActive(true);
         check_points.ResetV2();
-        PlayerPrefs.SetInt("MapStatus", 1);
+        PlayerPrefs.SetInt("MapStatus", 1); 
         PlayerPrefs.Save();
         levelschange.CheckingMapStatus();
         Player.SetActive(true);
@@ -105,12 +111,22 @@ public class Buttons : MonoBehaviour
         Progress.SetActive(true);
         gamemanager.UpInf();
         
+        
         check_points.SecondStart();
         Cursor.lockState = CursorLockMode.Locked;
         RotationModel.SetActive(false);
+        check_points.FindingAllMoneyAndActivate();
         
-        //IsNeedRemoveDownloading = true;
+        levelschange.Changer.enabled = true;
         Invoke("checkingDownloading", 1f);
+        if(PlayerPrefs.GetInt("MapStatus") == 2)
+        {
+            PlayerPrefs.SetInt("MapStatus", 3);
+            PlayerPrefs.Save();
+            //Debug.Log("" + PlayerPrefs.GetInt("MapStatus"));
+            SceneManager.LoadScene("Game 1");
+            return;
+        }
     }
 
     public void checkingDownloading()
@@ -121,6 +137,7 @@ public class Buttons : MonoBehaviour
         Downloading_Obj.SetActive(false);
         GameMusic.SetActive(true);
         MenuMusic.SetActive(false);
+        Player.SetActive(true);
     }
 
     public void Continue()
@@ -260,6 +277,7 @@ public class Buttons : MonoBehaviour
 
     void Update()
     {
+        
         if(Input.GetKeyDown(KeyCode.Escape) && Game.activeSelf && !Check_Points.IsGameOver)
         {
             
@@ -277,7 +295,8 @@ public class Buttons : MonoBehaviour
         }
         if (DoTween.IsActivePause)
         {
-            Player.transform.Rotate(0,1.6f,0);
+            CurrentRotationPlayer = Player.transform.rotation;
+            Player.transform.rotation = CurrentRotationPlayer * UnityEngine.Quaternion.Euler(0f, 1f, 0f);
 
         }
         if(IsPlayMoneySound)

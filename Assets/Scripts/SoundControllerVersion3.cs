@@ -14,6 +14,8 @@ public class SoundControllerVersion3 : MonoBehaviour
     public AudioSource audioSource2;
     public AudioSource audioSource3;
     public AudioSource audioSource4;
+    public AudioSource audioSource5;
+    public AudioSource audioSource6;
     public string SaveKey;
     private float volume;
     public static bool IsReady = false;
@@ -33,6 +35,8 @@ public class SoundControllerVersion3 : MonoBehaviour
             audioSource2.volume = (volume / 2) / 2;
             audioSource3.volume = volume;
             audioSource4.volume = volume;
+            audioSource5.volume = volume;
+            audioSource6.volume = volume;
             volumeText1.text = Mathf.RoundToInt(volume * 100f) + "%";
             PlayerPrefs.SetFloat(SaveKey, volume);
             PlayerPrefs.Save();
@@ -44,6 +48,8 @@ public class SoundControllerVersion3 : MonoBehaviour
             audioSource2.volume = (volume / 2) / 2;
             audioSource3.volume = volume;
             audioSource4.volume = volume;
+            audioSource5.volume = volume;
+            audioSource6.volume = volume;
             volumeText2.text = Mathf.RoundToInt(volume * 100f) + "%";
             PlayerPrefs.SetFloat(SaveKey, volume);
             PlayerPrefs.Save();

@@ -7,8 +7,9 @@ public class LevelsChange : MonoBehaviour
     
     [SerializeField] private GameObject Map1;
     [SerializeField] private GameObject Map2;
-    [SerializeField] private Collider Changer;
+    [SerializeField] public Collider Changer;
     [SerializeField] private GameObject Player;
+    [SerializeField] private Buttons buttons;
 
     void Start()
     {
@@ -36,14 +37,25 @@ public class LevelsChange : MonoBehaviour
 
     public void CheckingMapStatus()
     {
+        Debug.Log("" + PlayerPrefs.GetInt("MapStatus"));
+        
         if(PlayerPrefs.GetInt("MapStatus") == 2)
         {
             Map1.SetActive(false);
             Map2.SetActive(true);
+            Debug.Log("ВЫПОЛНИЛОСЬ НОМЕР 2!");
+
         } else if (PlayerPrefs.GetInt("MapStatus") == 1)
         {
             Map1.SetActive(true);
             Map2.SetActive(false);
+            Debug.Log("ВЫПОЛНИЛОСЬ НОМЕР 1!");
+        } else if (PlayerPrefs.GetInt("MapStatus") == 3)
+        {
+            PlayerPrefs.SetInt("MapStatus", 1);
+            PlayerPrefs.Save();
+            Debug.Log("ВЫПОЛНИЛОСЬ НОМЕР 3!");
+            buttons.NewGame();
         }
     }
 }

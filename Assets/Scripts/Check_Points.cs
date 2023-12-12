@@ -85,7 +85,7 @@ public class Check_Points : MonoBehaviour
         { 
             Buttons.IsPlayMoneySound = true;
             IsMoneyCountChanged = true; 
-            Destroy(this.gameObject); 
+            this.gameObject.SetActive(false);
 
             if (gamemanager != null) 
             {
@@ -219,11 +219,11 @@ public class Check_Points : MonoBehaviour
                             if(checkpoint.transform.Find("Money") != null) 
                             {
                                 GameObject deleteMoney = checkpoint.transform.Find("Money").gameObject;
-                                Destroy(deleteMoney);
+                                deleteMoney.SetActive(false);
                             }
                         }
                     }
-                    Destroy(checkpoint);
+                    checkpoint.SetActive(false);
                     break;
                 }
             }
@@ -263,6 +263,30 @@ public class Check_Points : MonoBehaviour
         PlayerCollider.enabled = true;
 
         gamemanager.UpInf();
+   }
+
+   public void FindingAllMoneyAndActivate()
+   {
+        // GameObject[] AllMoney = GameObject.FindGameObjectsWithTag("Money");
+        // foreach (GameObject MoneyMoney in AllMoney)
+        // {
+        //     if (MoneyMoney.name == "Money")
+        //     {
+        //         if(MoneyMoney != null)
+        //         {
+        //             MoneyMoney.SetActive(true);
+        //         }
+        //     }
+        // }
+        GameObject[] moneyObjects = GameObject.FindObjectsOfType<GameObject>(true);
+
+        foreach (GameObject moneyObject in moneyObjects)
+        {
+            if (moneyObject.name == "Money" && moneyObject != null)
+            {
+                moneyObject.SetActive(true);
+            }
+        }
    }
     
     
