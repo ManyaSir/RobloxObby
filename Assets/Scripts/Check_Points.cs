@@ -30,6 +30,8 @@ public class Check_Points : MonoBehaviour
     public DoTween dotween;
     public Collider PlayerCollider;
 
+    [SerializeField] public GameObject GameOverTextV4;
+
     public DoTween dotween2;
 
 
@@ -144,6 +146,9 @@ public class Check_Points : MonoBehaviour
             } else if (this.name == "PressWithThorns")
             {
                 GameOverTextV3.SetActive(true);
+            } else
+            {
+                GameOverTextV4.SetActive(true);
             }
             dotween2.PauseFadeIn();
 
@@ -252,6 +257,7 @@ public class Check_Points : MonoBehaviour
         GameOverTextV1.SetActive(false);
         GameOverTextV2.SetActive(false);
         GameOverTextV3.SetActive(false);
+        GameOverTextV4.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         firstpersonlook.FPL_Camera.SetActive(true);
         Camera.SetActive(false);
