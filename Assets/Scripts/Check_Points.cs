@@ -29,6 +29,7 @@ public class Check_Points : MonoBehaviour
     public Buttons buttons;
     public DoTween dotween;
     public Collider PlayerCollider;
+    private string LatestCheckpointNumber;
 
     [SerializeField] public GameObject GameOverTextV4;
 
@@ -87,6 +88,9 @@ public class Check_Points : MonoBehaviour
         { 
             Buttons.IsPlayMoneySound = true;
             IsMoneyCountChanged = true; 
+            LatestCheckpointNumber = this.name.Replace("Money ", "");
+            PlayerPrefs.SetInt("LatestNumberCheckpoint", int.Parse(LatestCheckpointNumber));
+            PlayerPrefs.Save();
             this.gameObject.SetActive(false);
 
             if (gamemanager != null) 

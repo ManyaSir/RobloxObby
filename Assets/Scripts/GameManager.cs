@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
         if(Check_Points.IsMoneyCountChanged == true)
         {
             Money += 5;
-            Current_Lvl++;
+            Current_Lvl = PlayerPrefs.GetInt("LatestNumberCheckpoint");
             PlayerPrefs.SetInt("Money", Money);
             PlayerPrefs.SetInt("Current_Lvl", Current_Lvl);
             PlayerPrefs.Save();
