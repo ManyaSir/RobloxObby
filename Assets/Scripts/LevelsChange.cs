@@ -10,6 +10,8 @@ public class LevelsChange : MonoBehaviour
     [SerializeField] public Collider Changer;
     [SerializeField] private GameObject Player;
     [SerializeField] private Buttons buttons;
+    [SerializeField] public GameObject GameMusic;
+    [SerializeField] public GameObject HellMusic;
 
     void Start()
     {
@@ -31,6 +33,8 @@ public class LevelsChange : MonoBehaviour
     {
         Map1.SetActive(false);
         Map2.SetActive(true);
+        GameMusic.SetActive(false);
+        HellMusic.SetActive(true);
         PlayerPrefs.SetInt("MapStatus", 2);
         PlayerPrefs.Save();
     }

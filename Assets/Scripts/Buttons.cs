@@ -118,6 +118,7 @@ public class Buttons : MonoBehaviour
         check_points.FindingAllMoneyAndActivate();
         
         levelschange.Changer.enabled = true;
+        levelschange.HellMusic.SetActive(false);
         Invoke("checkingDownloading", 1f);
         if(PlayerPrefs.GetInt("MapStatus") == 2)
         {
@@ -135,7 +136,15 @@ public class Buttons : MonoBehaviour
         soundcontrollerversion3.UpdateInfoSound();
         Audio_Controller_3.SetActive(false);
         Downloading_Obj.SetActive(false);
-        GameMusic.SetActive(true);
+        if(PlayerPrefs.GetInt("MapStatus") == 2)
+        {
+            levelschange.HellMusic.SetActive(true);
+            levelschange.GameMusic.SetActive(false);
+        } else
+        {
+            levelschange.HellMusic.SetActive(false);
+            levelschange.GameMusic.SetActive(true);
+        }
         MenuMusic.SetActive(false);
         Player.SetActive(true);
     }
@@ -158,6 +167,15 @@ public class Buttons : MonoBehaviour
         IsNeedRemoveDownloading = true;
         RotationModel.SetActive(false);
         Invoke("checkingDownloading", 1f);
+        if(PlayerPrefs.GetInt("MapStatus") == 2)
+        {
+            levelschange.HellMusic.SetActive(true);
+            levelschange.GameMusic.SetActive(false);
+        } else
+        {
+            levelschange.HellMusic.SetActive(false);
+            levelschange.GameMusic.SetActive(true);
+        }
         
 
     }
@@ -176,6 +194,7 @@ public class Buttons : MonoBehaviour
         check_points.Camera.SetActive(true);
         Menu.SetActive(true);
         Game.SetActive(false);
+        levelschange.HellMusic.SetActive(false);
         Progress.SetActive(false);
         Pause.SetActive(false);
         RotationModel.SetActive(true);
@@ -191,6 +210,7 @@ public class Buttons : MonoBehaviour
         Settings.SetActive(false);
         GameMusic.SetActive(false);
         MenuMusic.SetActive(true);
+        levelschange.   HellMusic.SetActive(false);
     }
 
     public void SettingsButton()

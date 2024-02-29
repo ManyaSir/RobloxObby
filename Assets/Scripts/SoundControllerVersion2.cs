@@ -12,6 +12,7 @@ public class SoundControllerVersion2 : MonoBehaviour
     public Text volumeText2;
     public AudioSource audioSource1;
     public AudioSource audioSource2;
+    public AudioSource audioSource3;
     public string SaveKey;
     private float volume;
     public static bool IsReady = false;
@@ -36,6 +37,7 @@ public class SoundControllerVersion2 : MonoBehaviour
         {
             volume = volumeSlider2.value;
             audioSource2.volume = volume;
+            audioSource3.volume = volume;  
             volumeText2.text = Mathf.RoundToInt(volume * 100f) + "%";
             PlayerPrefs.SetFloat(SaveKey, volume);
             PlayerPrefs.Save();
