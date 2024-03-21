@@ -197,7 +197,7 @@ public class Check_Points : MonoBehaviour
         {
             Debug.Log("Crash");
         }
-    }
+    } 
 
     public void SecondStart()
     {
@@ -290,11 +290,14 @@ public class Check_Points : MonoBehaviour
         // }
         GameObject[] moneyObjects = GameObject.FindObjectsOfType<GameObject>(true);
 
-        foreach (GameObject moneyObject in moneyObjects)
+        for (int i = 1; i <= 31; i++)
         {
-            if (moneyObject.name == "Money" && moneyObject != null)
+            foreach (GameObject moneyObject in moneyObjects)
             {
-                moneyObject.SetActive(true);
+                if (moneyObject.name == "Money " + i && moneyObject != null)
+                {
+                    moneyObject.SetActive(true);
+                }
             }
         }
    }

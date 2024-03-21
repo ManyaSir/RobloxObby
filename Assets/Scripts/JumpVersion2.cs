@@ -33,7 +33,7 @@ public class JumpVersion2 : MonoBehaviour
             JumpCountAnim = 2;
             IsGround = false;
             playeranimations.JumpAnim();
-            Debug.Log("sfdhlksfdlhkshsh");
+            //Debug.Log("sfdhlksfdlhkshsh");
         }
 
         if (rb.velocity.y < 0 && rb.velocity.y != 0 && IsGround == false)
@@ -41,7 +41,7 @@ public class JumpVersion2 : MonoBehaviour
             
             JumpCountAnim = 3;
             playeranimations.JumpAnim();
-            Debug.Log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            //Debug.Log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         }
         
     }

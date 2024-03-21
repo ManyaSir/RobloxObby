@@ -44,6 +44,7 @@ public class Buttons : MonoBehaviour
     [SerializeField] private GameObject Audio_Controller_3;
     [SerializeField] private GameObject RotationModel;
     [SerializeField] private PlayerRotation RotationModelScript;
+    [SerializeField] private GameObject FinishObj;
     public DoTween dotween;
     private bool Process = false;
     float delayStartTime;
@@ -115,7 +116,7 @@ public class Buttons : MonoBehaviour
         check_points.SecondStart();
         Cursor.lockState = CursorLockMode.Locked;
         RotationModel.SetActive(false);
-        check_points.FindingAllMoneyAndActivate();
+        check_points.FindingAllMoneyAndActivate(); 
         
         levelschange.Changer.enabled = true;
         levelschange.HellMusic.SetActive(false);
@@ -148,6 +149,29 @@ public class Buttons : MonoBehaviour
         MenuMusic.SetActive(false);
         Player.SetActive(true);
     }
+
+    // void OnMoneys()
+    // {
+    //     for (int i = 1; i <= 31; i++)
+    //     {
+    //         GameObject moneyObject = null;
+    //         GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
+    //         foreach (GameObject obj in allObjects)
+    //         {
+    //             if (obj.name == "Money " + i)
+    //             {
+    //                 moneyObject = obj;
+    //                 break;
+    //             }
+    //         }
+            
+    //         if (moneyObject != null)
+    //         {
+    //             moneyObject.SetActive(true);
+    //             Debug.Log("Enabled: " + moneyObject.name);
+    //         }
+    //     }
+    // }
 
     public void Continue()
     {
@@ -268,6 +292,20 @@ public class Buttons : MonoBehaviour
         Pause.SetActive(true);
         soundcontrollerversion2.UpdateInfoSound();
         soundcontrollerversion3.UpdateInfoSound();
+
+    }
+
+    public void FinishTrigger()
+    {
+        firstpersonlook.PauseDataSave();
+        Cursor.lockState = CursorLockMode.None;
+        check_points.Camera.transform.position = firstpersonlook.CameraPosition;
+        check_points.Camera.transform.rotation = firstpersonlook.CameraRotation;
+        firstpersonmovementscript.enabled = false;
+        jumpversion2Script.enabled = false;
+        check_points.Camera.SetActive(true);
+        firstpersonlook.FPL_Camera.SetActive(false);
+        FinishObj.SetActive(true);
 
     }
 
