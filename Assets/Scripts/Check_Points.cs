@@ -16,6 +16,7 @@ public class Check_Points : MonoBehaviour
     public Quaternion CameraRotationStart;
     public GameObject DestroyMoneyGameObject;
     public GameManager gamemanager;
+    public Finish finishscript;
     [SerializeField] public GameObject GameOverMenu;
     [SerializeField] public GameObject GameOverTextV1;
     [SerializeField] public GameObject GameOverTextV2;
@@ -207,6 +208,8 @@ public class Check_Points : MonoBehaviour
         Latest_Checkpoint.transform.position = Latest_Checkpoint_count.transform.position;  
         Player.transform.position = Latest_Checkpoint.transform.position;
         PlayerPrefs.SetString("StringLatest_BlockWall", null);
+        GameManager.Current_Lvl = 0;
+        PlayerPrefs.SetInt("Current_Lvl", 0);
         PlayerPrefs.Save();
         
 

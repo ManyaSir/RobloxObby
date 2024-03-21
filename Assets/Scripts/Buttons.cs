@@ -30,6 +30,7 @@ public class Buttons : MonoBehaviour
     public Check_Points check_points;
     public GameManager gamemanager;
     public FirstPersonLook firstpersonlook; 
+    public Finish finishscript;
     bool IsPauseActive = false;
     private int CurrentPage = 1;
     public LevelsChange levelschange;
@@ -111,6 +112,7 @@ public class Buttons : MonoBehaviour
         Settings.SetActive(false);
         Progress.SetActive(true);
         gamemanager.UpInf();
+        finishscript.rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
         
         
         check_points.SecondStart();
@@ -225,6 +227,37 @@ public class Buttons : MonoBehaviour
         Invoke("BackGameDownloading", 1f);
         
     }
+    public void BackGameMenu2()
+    {
+        Click.Play();
+        Downloading_Obj.SetActive(true);
+        Settings.SetActive(true);
+        check_points.DeathGroundAndPlayer();
+        Cursor.lockState = CursorLockMode.None;
+        Player.SetActive(false);
+        check_points.Camera.transform.position = check_points.CameraPositionStart;
+        check_points.Camera.transform.rotation = check_points.CameraRotationStart;
+        firstpersonlook.FPL_Camera.SetActive(true);
+        check_points.Camera.SetActive(true);
+        Menu.SetActive(true);
+        Game.SetActive(false);
+        levelschange.HellMusic.SetActive(false);
+        Progress.SetActive(false);
+        Pause.SetActive(false);
+        finishscript.FinishObj.SetActive(false);
+        RotationModel.SetActive(true);
+        finishscript.rb.constraints &= ~RigidbodyConstraints.FreezePositionY;
+        finishscript.Mesh.SetActive(true);
+        PlayerPrefs.SetInt("MapStatus", 1); 
+        PlayerPrefs.Save();
+        finishscript.DanceMan1.SetActive(false);
+        finishscript.DanceMan2.SetActive(false);
+        check_points.SecondStart();
+        gamemanager.UpInf();
+        Debug.Log(GameManager.Current_Lvl + "");
+        Invoke("BackGameDownloading", 1f);
+        
+    }
 
     public void BackGameDownloading()
     {
@@ -234,7 +267,7 @@ public class Buttons : MonoBehaviour
         Settings.SetActive(false);
         GameMusic.SetActive(false);
         MenuMusic.SetActive(true);
-        levelschange.   HellMusic.SetActive(false);
+        levelschange.HellMusic.SetActive(false);
     }
 
     public void SettingsButton()

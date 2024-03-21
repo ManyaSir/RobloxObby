@@ -8,10 +8,12 @@ public class Finish : MonoBehaviour
     public Check_Points check_points;    
     public JumpVersion2 jumpversion2Script;
     public FirstPersonMovement firstpersonmovementscript;
-    [SerializeField] private GameObject FinishObj;    
+    [SerializeField] public GameObject FinishObj;    
     [SerializeField] private GameObject Player;
     [SerializeField] public Rigidbody rb;
-    [SerializeField] private GameObject Mesh;
+    [SerializeField] public GameObject Mesh;
+    [SerializeField] public GameObject DanceMan1;
+    [SerializeField] public GameObject DanceMan2;
     void OnTriggerEnter(Collider other)
     {
         
@@ -26,6 +28,8 @@ public class Finish : MonoBehaviour
             check_points.Camera.SetActive(true);
             firstpersonlook.FPL_Camera.SetActive(false);
             FinishObj.SetActive(true);
+            DanceMan1.SetActive(true);
+            DanceMan2.SetActive(true);
             rb.constraints = RigidbodyConstraints.FreezePositionY;
             Mesh.SetActive(false);
             Debug.Log("Да-да-да-да-да");
