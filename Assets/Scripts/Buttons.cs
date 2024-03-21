@@ -23,13 +23,13 @@ public class Buttons : MonoBehaviour
     [SerializeField] private GameObject NextButton;
     [SerializeField] private GameObject BackButton;
     [SerializeField] private AudioSource Click;
-    [SerializeField] private JumpVersion2 jumpversion2Script;
+    //[SerializeField] private JumpVersion2 jumpversion2Script;
     [SerializeField] private FirstPersonMovement firstpersonmovementscript;
     // [SerializeField] private Image PauseMeshRender;
     // [SerializeField] private Button ButtonPause;
     public Check_Points check_points;
     public GameManager gamemanager;
-    public FirstPersonLook firstpersonlook; 
+    public ThirdPersonOrbitCamBasic thirdpersonorbitcambasic; 
     public Finish finishscript;
     bool IsPauseActive = false;
     private int CurrentPage = 1;
@@ -46,6 +46,7 @@ public class Buttons : MonoBehaviour
     [SerializeField] private GameObject RotationModel;
     [SerializeField] private PlayerRotation RotationModelScript;
     [SerializeField] private GameObject FinishObj;
+    public MoveBehaviour movebehaviour;
     public DoTween dotween;
     private bool Process = false;
     float delayStartTime;
@@ -53,6 +54,7 @@ public class Buttons : MonoBehaviour
     [SerializeField] public AudioSource MoneySounds;
     public static bool IsPlayMoneySound = false;
     private UnityEngine.Quaternion CurrentRotationPlayer;
+    public Rigidbody rb;
 
     
 
@@ -216,7 +218,7 @@ public class Buttons : MonoBehaviour
         Player.SetActive(false);
         check_points.Camera.transform.position = check_points.CameraPositionStart;
         check_points.Camera.transform.rotation = check_points.CameraRotationStart;
-        firstpersonlook.FPL_Camera.SetActive(true);
+        thirdpersonorbitcambasic.FPL_Camera.SetActive(true);
         check_points.Camera.SetActive(true);
         Menu.SetActive(true);
         Game.SetActive(false);
@@ -237,7 +239,7 @@ public class Buttons : MonoBehaviour
         Player.SetActive(false);
         check_points.Camera.transform.position = check_points.CameraPositionStart;
         check_points.Camera.transform.rotation = check_points.CameraRotationStart;
-        firstpersonlook.FPL_Camera.SetActive(true);
+        thirdpersonorbitcambasic.FPL_Camera.SetActive(true);
         check_points.Camera.SetActive(true);
         Menu.SetActive(true);
         Game.SetActive(false);
@@ -308,20 +310,20 @@ public class Buttons : MonoBehaviour
         CurrentPage = 1;
         NextButton.SetActive(true);
         BackButton.SetActive(false);
-        firstpersonmovementscript.enabled = true;
-        jumpversion2Script.enabled = true;
+        movebehaviour.enabled = true;
+        //MoveBehaviour.canJump = true;
     }
 
     public void PauseButton()
     {
-        firstpersonlook.PauseDataSave();
+        thirdpersonorbitcambasic.PauseDataSave();
         Cursor.lockState = CursorLockMode.None;
-        check_points.Camera.transform.position = firstpersonlook.CameraPosition;
-        check_points.Camera.transform.rotation = firstpersonlook.CameraRotation;
-        firstpersonmovementscript.enabled = false;
-        jumpversion2Script.enabled = false;
+        check_points.Camera.transform.position = thirdpersonorbitcambasic.CameraPosition;
+        check_points.Camera.transform.rotation = thirdpersonorbitcambasic.CameraRotation;
+        movebehaviour.enabled = false;
+        //MoveBehaviour.canJump = false;
         check_points.Camera.SetActive(true);
-        firstpersonlook.FPL_Camera.SetActive(false);
+        thirdpersonorbitcambasic.FPL_Camera.SetActive(false);
         Pause.SetActive(true);
         soundcontrollerversion2.UpdateInfoSound();
         soundcontrollerversion3.UpdateInfoSound();
@@ -330,14 +332,14 @@ public class Buttons : MonoBehaviour
 
     public void FinishTrigger()
     {
-        firstpersonlook.PauseDataSave();
+        thirdpersonorbitcambasic.PauseDataSave();
         Cursor.lockState = CursorLockMode.None;
-        check_points.Camera.transform.position = firstpersonlook.CameraPosition;
-        check_points.Camera.transform.rotation = firstpersonlook.CameraRotation;
-        firstpersonmovementscript.enabled = false;
-        jumpversion2Script.enabled = false;
+        check_points.Camera.transform.position = thirdpersonorbitcambasic.CameraPosition;
+        check_points.Camera.transform.rotation = thirdpersonorbitcambasic.CameraRotation;
+        movebehaviour.enabled = false;
+        //MoveBehaviour.canJump = false;
         check_points.Camera.SetActive(true);
-        firstpersonlook.FPL_Camera.SetActive(false);
+        thirdpersonorbitcambasic.FPL_Camera.SetActive(false);
         FinishObj.SetActive(true);
 
     }
@@ -346,12 +348,14 @@ public class Buttons : MonoBehaviour
     {
         Click.Play();
         Cursor.lockState = CursorLockMode.Locked;
-        firstpersonlook.FPL_Camera.SetActive(true);
+        thirdpersonorbitcambasic.FPL_Camera.SetActive(true);
         check_points.Camera.SetActive(false);
         check_points.Camera.transform.position = check_points.CameraPositionStart;
         check_points.Camera.transform.rotation = check_points.CameraRotationStart;
-        firstpersonmovementscript.enabled = true;
-        jumpversion2Script.enabled = true;
+        movebehaviour.enabled = true;
+        rb.constraints = RigidbodyConstraints.None;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        //MoveBehaviour.canJump = true;
         
         
     }

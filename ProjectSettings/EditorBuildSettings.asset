@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Game 1.unity
-    guid: 3ee206fa88ce36048a471efe53941661
+    path: Assets/3rdPerson+Fly/Scenes/3rdPerson+Fly.unity
+    guid: edce6a3cd6b78e7459bd2864b9295f8c
   m_configObjects: {}

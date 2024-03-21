@@ -24,8 +24,9 @@ public class Check_Points : MonoBehaviour
     [SerializeField] private AudioSource DeathSound;
     [SerializeField] private FirstPersonMovement firstpersonmovementscript;
     [SerializeField] private JumpVersion2 jumpversion2Script;
+    public MoveBehaviour movebehaviour;
     public static bool IsGameOver = false;
-    public FirstPersonLook firstpersonlook; 
+    public ThirdPersonOrbitCamBasic thirdpersonorbitcambasic; 
     [SerializeField] public GameObject PlayerModel;
     public Buttons buttons;
     public DoTween dotween;
@@ -129,14 +130,14 @@ public class Check_Points : MonoBehaviour
             buttons.BackPause();
             dotween.PauseFadeOut();
             PlayerModel.SetActive(false);
-            firstpersonlook.PauseDataSave();
+            thirdpersonorbitcambasic.PauseDataSave();
             Cursor.lockState = CursorLockMode.None;
-            Camera.transform.position = firstpersonlook.CameraPosition;
-            Camera.transform.rotation = firstpersonlook.CameraRotation;
-            firstpersonmovementscript.enabled = false;
-            jumpversion2Script.enabled = false;
+            Camera.transform.position = thirdpersonorbitcambasic.CameraPosition;
+            Camera.transform.rotation = thirdpersonorbitcambasic.CameraRotation;
+            movebehaviour.enabled = false;
+            //jumpversion2Script.enabled = false;
             Camera.SetActive(true);
-            firstpersonlook.FPL_Camera.SetActive(false);
+            thirdpersonorbitcambasic.FPL_Camera.SetActive(false);
             IsGameOver = true;
             GameOverMenu.SetActive(true);
             DeathSound.Play();
@@ -266,12 +267,12 @@ public class Check_Points : MonoBehaviour
         GameOverTextV3.SetActive(false);
         GameOverTextV4.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
-        firstpersonlook.FPL_Camera.SetActive(true);
+        thirdpersonorbitcambasic.FPL_Camera.SetActive(true);
         Camera.SetActive(false);
         Camera.transform.position = CameraPositionStart;
         Camera.transform.rotation = CameraRotationStart;
-        firstpersonmovementscript.enabled = true;
-        jumpversion2Script.enabled = true;
+        movebehaviour.enabled = true;
+        //jumpversion2Script.enabled = true;
         PlayerModel.SetActive(true);
         PlayerCollider.enabled = true;
 
