@@ -32,6 +32,7 @@ public class Check_Points : MonoBehaviour
     public DoTween dotween;
     public Collider PlayerCollider;
     private string LatestCheckpointNumber;
+    [SerializeField] public Rigidbody rb;
 
     [SerializeField] public GameObject GameOverTextV4;
 
@@ -268,6 +269,8 @@ public class Check_Points : MonoBehaviour
         GameOverTextV4.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         thirdpersonorbitcambasic.FPL_Camera.SetActive(true);
+        rb.constraints = RigidbodyConstraints.None;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
         Camera.SetActive(false);
         Camera.transform.position = CameraPositionStart;
         Camera.transform.rotation = CameraRotationStart;
