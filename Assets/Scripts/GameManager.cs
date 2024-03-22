@@ -34,6 +34,13 @@ public class GameManager : MonoBehaviour
         Money = PlayerPrefs.GetInt("Money");
         lvls_count.text = "" + Current_Lvl;
         money_count.text = "" + Money;
+        if(PlayerPrefs.GetInt("IsStartedGame") == 0)
+        {
+            PlayerPrefs.SetInt("IsStartedGame", 1);
+            PlayerPrefs.SetInt("CurrentAccessory_1", -1);
+            PlayerPrefs.SetInt("CurrentAccessory_2", -1);
+            PlayerPrefs.Save();
+        }
 
     }
     

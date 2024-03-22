@@ -28,6 +28,7 @@ public class Check_Points : MonoBehaviour
     public static bool IsGameOver = false;
     public ThirdPersonOrbitCamBasic thirdpersonorbitcambasic; 
     [SerializeField] public GameObject PlayerModel;
+    [SerializeField] public GameObject PlayerModel2;
     public Buttons buttons;
     public DoTween dotween;
     public Collider PlayerCollider;
@@ -131,6 +132,7 @@ public class Check_Points : MonoBehaviour
             buttons.BackPause();
             dotween.PauseFadeOut();
             PlayerModel.SetActive(false);
+            PlayerModel2.SetActive(false);
             thirdpersonorbitcambasic.PauseDataSave();
             Cursor.lockState = CursorLockMode.None;
             Camera.transform.position = thirdpersonorbitcambasic.CameraPosition;
@@ -277,6 +279,7 @@ public class Check_Points : MonoBehaviour
         movebehaviour.enabled = true;
         //jumpversion2Script.enabled = true;
         PlayerModel.SetActive(true);
+        PlayerModel2.SetActive(true);
         PlayerCollider.enabled = true;
 
         gamemanager.UpInf();

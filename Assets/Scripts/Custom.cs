@@ -12,8 +12,8 @@ public class Custom : MonoBehaviour
     public GameManager gamemanager;
     [SerializeField] private GameObject CostButton;
     [SerializeField] private int IndexCost;
-    private int CurrentAccessoryIndex1 = -1;
-    private int CurrentAccessoryIndex2 = -1;
+    private int CurrentAccessoryIndex1 = -5;
+    private int CurrentAccessoryIndex2 = -5;
     [SerializeField] private AudioSource Click;
     public static bool IsReady = false;
 

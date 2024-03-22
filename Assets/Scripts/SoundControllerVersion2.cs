@@ -21,6 +21,12 @@ public class SoundControllerVersion2 : MonoBehaviour
     {
         UpdateInfoSound();
         IsReady = true;
+        if(PlayerPrefs.GetInt("SoundStarted1") == 0)
+        {
+            PlayerPrefs.SetInt("SoundStarted1", 1);
+            PlayerPrefs.Save();
+            volume = 1;
+        }
     }
 
     public void SetVolume(int Index)
